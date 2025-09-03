@@ -28,7 +28,6 @@
   --color-error: rgb(255, 71, 87);
   --color-red-500: rgb(239, 68, 68);
   --color-red-300: rgb(252, 165, 165);
-  --font-weight-thin: 400;
   --font-weight-medium: 500;
   --font-weight-bold: 700;
   --font-weight-extrabold: 800;
@@ -60,6 +59,10 @@
 .container {
   padding: 0 1rem;
   margin: auto
+}
+
+*{
+  font-family: var(--font-kalameh);
 }
 
 body {
