@@ -1,8 +1,12 @@
 import React from 'react'
 
+export const metadata = {
+    title: 'خانه'
+}
+
 export default function HomePage() {
   return (
-    <div>
+    <div className='text-secondary-0 font-black'>
       خانه
     </div>
   )
