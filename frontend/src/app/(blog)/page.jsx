@@ -4,6 +4,7 @@ import { RiMenu2Fill } from "react-icons/ri";
 import React from 'react'
 import Logo from '@/components/Logo';
 import NavLink from '@/components/NavLink';
+import Header from './_components/Header';
 
 export const metadata = {
   title: 'خانه'
@@ -12,18 +13,7 @@ export const metadata = {
 function HomePage() {
   return (
     <div className='text-secondary-0 font-black'>
-      <Button
-        variant={'white'}
-        className={'font-normal'}
-      >
-        سلام
-      </Button>
-      <ButtonIcon variant={'white'}>
-        <span>سلام</span>
-        <RiMenu2Fill />
-      </ButtonIcon>
-      <Logo />
-      <NavLink path={'/'}>خانه</NavLink>
+      <Header />
     </div>
   )
 }
