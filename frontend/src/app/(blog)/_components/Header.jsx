@@ -6,6 +6,7 @@ import Button from '@/ui/Button'
 import Logo from '@/components/Logo'
 import { RiMenu2Fill } from "react-icons/ri";
 import ButtonIcon from '@/ui/ButtonIcon'
+import useOutsideClick from '@/hooks/useOutsideClick'
 
 const navLinks = [
     {
@@ -22,6 +23,7 @@ const navLinks = [
 
 function Header() {
     const [isOpen, setIsOpen] = useState(false)
+    const ref = useOutsideClick(closeMenu)
 
     function closeMenu() {
         setIsOpen(false)
@@ -30,7 +32,7 @@ function Header() {
     return (
         <div className='container sticky top-[1rem] flex justify-between items-center !py-2 sm:grid sm:grid-cols-[1fr_2fr]'>
             <Logo />
-            <div className={`absolute top-0 h-[calc(100vh-2rem)] w-[14rem] bg-secondary-900 
+            <div ref={ref} className={`absolute top-0 h-[calc(100vh-2rem)] w-[14rem] bg-secondary-900 
             flex flex-col justify-between items-center rounded-[0_10px_10px_0] 
             ${isOpen ? 'left-0' : '-left-96'} my-4 p-4 transition-all duration-200 sm:h-auto 
             sm:bg-transparent sm:grid sm:grid-cols-2 sm:items-center sm:static sm:w-full sm:p-0 sm:m-0`}>
