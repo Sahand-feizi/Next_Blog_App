@@ -56,12 +56,34 @@
   }
 }
 
+@layer components {
+  .btn {
+    @apply py-2 px-4 rounded-lg text-base transition-all duration-200 cursor-pointer
+  }
+
+  .btn--primary {
+    @apply text-secondary-0 bg-primary-900 hover:bg-primary-800
+  }
+
+  .btn--secondary {
+    @apply text-secondary-500 bg-secondary-200 border border-secondary-500
+  }
+
+  .btn--danger {
+    @apply text-error bg-red-200 border border-error
+  }
+
+  .btn--white {
+    @apply text-secondary-900 bg-secondary-0
+  }
+}
+
 .container {
   padding: 0 1rem;
   margin: auto
 }
 
-*{
+* {
   font-family: var(--font-kalameh);
 }
 
