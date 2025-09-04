@@ -11,7 +11,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="fa" dir="rtl">
       <body className={`${kalamehFont.variable} sans`}>
         {children}
       </body>

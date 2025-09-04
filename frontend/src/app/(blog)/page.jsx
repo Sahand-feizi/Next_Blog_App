@@ -2,6 +2,8 @@ import Button from '@/ui/Button'
 import ButtonIcon from '@/ui/ButtonIcon'
 import { RiMenu2Fill } from "react-icons/ri";
 import React from 'react'
+import Logo from '@/components/Logo';
+import NavLink from '@/components/NavLink';
 
 export const metadata = {
   title: 'خانه'
@@ -20,6 +22,8 @@ function HomePage() {
         <span>سلام</span>
         <RiMenu2Fill />
       </ButtonIcon>
+      <Logo />
+      <NavLink path={'/'}>خانه</NavLink>
     </div>
   )
 }
