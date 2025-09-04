@@ -13,7 +13,7 @@ export const metadata = {
 function HomePage() {
   return (
     <div className='text-secondary-0 font-black'>
-      <Header />
+      سلام
     </div>
   )
 }
