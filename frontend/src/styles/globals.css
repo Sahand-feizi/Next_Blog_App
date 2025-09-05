@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --background-app-rgb: rgb(249, 250, 251);
+  --background-app-rgb: rgb(23, 23, 23);
   --color-primary-900: rgb(74, 109, 255);
   --color-primary-800: rgb(92, 124, 255);
   --color-primary-700: rgb(110, 138, 255);
@@ -69,12 +69,21 @@
     @apply text-secondary-500 bg-secondary-200 border border-secondary-500
   }
 
+
   .btn--danger {
     @apply text-error bg-red-200 border border-error
   }
 
   .btn--white {
     @apply text-secondary-900 bg-secondary-0
+  }
+
+  .btn--outline {
+    @apply bg-transparent border border-secondary-0 text-secondary-0
+  }
+
+  .Search_input {
+    @apply w-full rounded-lg bg-black font-normal placeholder-secondary-400 text-secondary-0 px-3 py-2 text-base z-20 transition-all outline-0 duration-200 focus:ring-2 focus:ring-secondary-600 focus:border-2 focus:border-secondary-700
   }
 }
 
@@ -88,7 +97,7 @@
 }
 
 body {
-  background-color: #000;
+  background-color: var(--background-app-rgb);
   overflow-x: hidden;
   padding: 0;
   margin: 0;

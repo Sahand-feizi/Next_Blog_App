@@ -4,7 +4,8 @@ const btnTypes = {
     primary: 'btn--primary',
     secondary: 'btn--secondary',
     white: 'btn--white',
-    danger: 'btn--danger'
+    danger: 'btn--danger',
+    outline: 'btn--outline'
 }
 
 function Button({ children, variant, onClick, className, ...rest }) {
