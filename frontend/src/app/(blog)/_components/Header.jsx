@@ -30,7 +30,7 @@ function Header() {
     }
 
     return (
-        <div className='container sticky top-[1rem] flex justify-between items-center !py-2 sm:grid sm:grid-cols-[1fr_2fr]'>
+        <div className='container sticky top-[1rem] z-30 flex justify-between items-center !py-2 sm:grid sm:grid-cols-[1fr_2fr]'>
             <Logo />
             <div ref={ref} className={`absolute top-0 h-[calc(100vh-2rem)] w-[14rem] bg-secondary-900 
             flex flex-col justify-between items-center rounded-[0_10px_10px_0] 

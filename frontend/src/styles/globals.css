@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --background-app-rgb: rgb(23, 23, 23);
+  --color-secondary-950: rgb(23, 23, 23);
   --color-primary-900: rgb(74, 109, 255);
   --color-primary-800: rgb(92, 124, 255);
   --color-primary-700: rgb(110, 138, 255);
@@ -97,7 +97,7 @@
 }
 
 body {
-  background-color: var(--background-app-rgb);
+  background-color: var(--color-secondary-950);
   overflow-x: hidden;
   padding: 0;
   margin: 0;
