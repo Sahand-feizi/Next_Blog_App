@@ -16,10 +16,11 @@ function BlogItem({
     slug,
     isLiked,
     _id,
-    isBookmarked
+    isBookmarked,
+    className
 }) {
     return (
-        <div className='w-full h-full rounded-xl overflow-hidden'>
+        <div className={`${className} rounded-xl overflow-hidden`}>
             <CoverImage coverImageUrl={coverImageUrl}>
                 <div className='h-full w-full bg-linear-to-t from-black to-transparent z-20 
                 absolute top-0 left-0'>

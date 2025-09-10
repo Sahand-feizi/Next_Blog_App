@@ -6,7 +6,7 @@ const btnType = {
     outline:
         "border border-secondary-200 text-secondary-500 hover:bg-secondary-200",
     red: "bg-red-100  text-red-500 hover:bg-red-500 hover:text-white",
-    danger: "border border-red-100 text-red-500",
+    danger: "bg-white text-red-500 hover:bg-red-500 hover:text-white",
     white: "text-secondary-0 bg-transparent"
 };
 

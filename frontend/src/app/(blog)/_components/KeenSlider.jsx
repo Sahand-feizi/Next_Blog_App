@@ -8,7 +8,7 @@ function KeenSlider({ blogs, breakpoints, perView}) {
     const [sliderRef] = useKeenSlider({
         loop: false,
         mode: "free",
-        
+
         slides: {
             perView: perView,
             spacing: 15,
@@ -21,7 +21,7 @@ function KeenSlider({ blogs, breakpoints, perView}) {
             {
                 blogs.map(item => (
                     <div key={item._id} className="keen-slider__slide number-slide1 flex justify-center">
-                        <BlogItem className={'!h-[20rem]'} {...item} />
+                        <BlogItem className={'w-full !h-[20rem]'} {...item} />
                     </div>
                 ))
             }
