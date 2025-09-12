@@ -1,4 +1,5 @@
 import kalamehFont from "@/constants/localFonts";
+import AuthProvider from "@/context/AuthContext";
 import "@/styles/globals.css";
 
 export const metadata = {
@@ -13,7 +14,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="fa" dir="rtl">
       <body className={`${kalamehFont.variable} sans`}>
-        {children}
+        <AuthProvider>
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );
