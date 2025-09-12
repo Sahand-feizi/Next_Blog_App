@@ -85,6 +85,13 @@
   .Search_input {
     @apply w-full rounded-lg bg-black font-normal placeholder-secondary-400 text-secondary-0 px-3 py-2 text-base z-20 transition-all outline-0 duration-200 focus:ring-2 focus:ring-secondary-600 focus:border-2 focus:border-secondary-700
   }
+
+  .Text_Field{
+    @apply w-full p-2 rounded-lg border border-secondary-400 hover:border-secondary-0 text-base text-secondary-0 hover:shadow-lg hover:shadow-secondary-900 outline-0 focus:ring-2 focus:ring-secondary-600 focus:!border-2 focus:!border-secondary-700
+  }
+  .Error_Input{
+    @apply border-error focus:ring-2 focus:ring-red-700/40 focus:!border-2 focus:!border-red-400/40
+  }
 }
 
 .container {

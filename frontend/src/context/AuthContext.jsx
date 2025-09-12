@@ -1,6 +1,6 @@
 'use client'
 
-import { getUserApi, logoutUserApi, signinUserApi, signupUserApi } from "@/services/authServies";
+import { getUserApi, logoutUserApi, signinUserApi, signupUserApi } from "@/services/authServices";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
