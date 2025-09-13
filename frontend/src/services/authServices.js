@@ -15,3 +15,7 @@ export async function getUserApi() {
 export async function logoutUserApi() {
     return await http.post('/user/logout').then(({ data }) => data.data)
 }
+
+export async function refreshTokenApi() {
+    return await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/user/refresh-token`, { withCredentials: true }).then(({ data }) => data.data)
+}
