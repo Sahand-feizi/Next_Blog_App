@@ -7,6 +7,9 @@ import Logo from '@/components/Logo'
 import { RiMenu2Fill } from "react-icons/ri";
 import ButtonIcon from '@/ui/ButtonIcon'
 import useOutsideClick from '@/hooks/useOutsideClick'
+import LoadingSpinner from '@/ui/LoadingSpinner'
+import User from './User'
+import { useAuth } from '@/context/AuthContext'
 
 const navLinks = [
     {
@@ -24,6 +27,7 @@ const navLinks = [
 function Header() {
     const [isOpen, setIsOpen] = useState(false)
     const ref = useOutsideClick(closeMenu)
+    const { isLoading, user } = useAuth()
 
     function closeMenu() {
         setIsOpen(false)
@@ -43,13 +47,18 @@ function Header() {
                         ))
                     }
                 </nav>
-                <Link className='justify-self-end w-full sm:w-auto' href='/signin'>
-                    <Button
-                        className='w-full sm:w-auto font-normal'
-                        variant='white'
-                        onClick={() => { }}
-                    >ورود | ثبت نام</Button>
-                </Link>
+                {
+                    isLoading ? <LoadingSpinner width='30' height='20' />
+                        : user ?
+                            <User {...user} /> :
+                            <Link className='justify-self-end w-full sm:w-auto' href='/signin'>
+                                <Button
+                                    className='w-full sm:w-auto'
+                                    variant='white'
+                                    onClick={() => { }}
+                                >ورود | ثبت نام</Button>
+                            </Link>
+                }
             </div>
             <ButtonIcon className='sm:hidden' variant='white' onClick={() => setIsOpen(true)}>
                 <RiMenu2Fill />
