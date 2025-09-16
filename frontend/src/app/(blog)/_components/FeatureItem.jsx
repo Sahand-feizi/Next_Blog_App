@@ -17,7 +17,7 @@ function FeatureItem({ icon, title, description, color }) {
                 {icon}
             </div>
             <div className="space-y-2">
-                <h3 className='text-secondary-0 font-bold text-base xl:text-lg'>{title}</h3>
+                <h3 className='text-secondary-0 font-medium text-base xl:text-lg'>{title}</h3>
                 <p className='lg:text-sm text-xs text-secondary-300 font-thin'>{description}</p>
             </div>
         </div>

@@ -4,6 +4,7 @@ import SearchInput from '@/ui/SearchInput';
 import CoverBordImage from '@/ui/CoverBordImage';
 import Link from 'next/link';
 import BlogSlider from './_components/BlogSlider';
+import Features from './_components/Features';
 
 export const metadata = {
   title: 'خانه'
@@ -32,6 +33,7 @@ function HomePage() {
         </div>
       </CoverBordImage>
       <BlogSlider />
+      <Features />
     </div>
   )
 }
