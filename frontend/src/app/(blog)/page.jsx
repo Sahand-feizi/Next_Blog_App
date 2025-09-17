@@ -5,6 +5,7 @@ import CoverBordImage from '@/ui/CoverBordImage';
 import Link from 'next/link';
 import BlogSlider from './_components/BlogSlider';
 import Features from './_components/Features';
+import Footer from './_components/Footer';
 
 export const metadata = {
   title: 'خانه'
@@ -34,6 +35,7 @@ function HomePage() {
       </CoverBordImage>
       <BlogSlider />
       <Features />
+      <Footer />
     </div>
   )
 }

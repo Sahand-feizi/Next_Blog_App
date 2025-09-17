@@ -8,7 +8,7 @@ function GoUpButton() {
         <Button
             variant={'white'}
             onClick={() => window.scrollTo(0, 0)}
-            className={'w-[50px] h-[50px] !p-0 !text-[20px] rounded-full flex items-center justify-center'}>
+            className={'w-[35px] h-[35px] sm:w-[50px] sm:h-[50px] !p-0 !text-[20px] rounded-full flex items-center justify-center'}>
             <RiArrowDropUpFill className='!text-2xl' />
         </Button>
     )
