@@ -39,7 +39,7 @@ function layout({ children }) {
                     <CategoriesList />
                 </FilterForm>
             </div>
-            <div className='col-span-12 pt-10 md:col-span-8 lg:col-span-9'>
+            <div className='col-span-12 md:pt-10 md:col-span-8 lg:col-span-9'>
                 <Suspense fallback={<LoadingSpinner />}>
                     {children}
                 </Suspense>
