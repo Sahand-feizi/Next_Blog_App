@@ -1,13 +1,33 @@
 'use client'
+import { createComment } from '@/lib/actions'
 import SubmitButton from '@/ui/SubmitButton'
 import TextArea from '@/ui/TextArea'
-import React, { useState } from 'react'
+import React, { useActionState, useEffect, useState } from 'react'
+import toast from 'react-hot-toast'
 
-function CreateCommentForm() {
+const initialState = {
+    error: '',
+    message: ''
+}
+
+function CreateCommentForm({ blogId, parentId, onClose }) {
     const [text, setText] = useState('')
+    const [state, addNewComment] = useActionState(createComment, initialState)
+
+    useEffect(() => {
+        if (state.message) {
+            toast.success(state.message)
+            onClose()
+        }
+        if (state.error) {
+            toast.error(state.error)
+        }
+    }, [state])
 
     return (
-        <form className='w-full space-y-3'>
+        <form action={async (formData) => {
+            await addNewComment({ formData, blogId, parentId })
+        }} className='w-full space-y-3'>
             <TextArea
                 labelValue={'متن نظر'}
                 name={'text'}

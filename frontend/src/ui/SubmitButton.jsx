@@ -8,10 +8,10 @@ function SubmitButton({ children, className }) {
     const { pending } = useFormStatus()
 
     return (
-        <Button className={className} variant={'white'}>
+        <Button className={`flex justify-center ${className}`} variant={'white'}>
             {
                 pending ?
-                    <LoadingSpinner /> :
+                    <LoadingSpinner height='30' width='30' color='#000' /> :
                     children
             }
         </Button>

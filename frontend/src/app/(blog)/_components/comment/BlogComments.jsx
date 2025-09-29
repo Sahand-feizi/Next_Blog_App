@@ -40,7 +40,11 @@ function BlogComments({ blog: { comments, _id: blogId } }) {
                     open={isOpen}
                     onClose={() => setIsOpen(false)}
                 >
-                    <CreateCommentForm />
+                    <CreateCommentForm
+                        blogId={blogId}
+                        parentId={parent?._id || null}
+                        onClose={() => setIsOpen(false)}
+                    />
                 </Modal>
                 <div className="space-y-8 post-comments bg-secondary-950 rounded-xl py-6 px-3 lg:px-6 ">
                     {comments.length > 0 ? (
