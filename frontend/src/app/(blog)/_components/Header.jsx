@@ -28,42 +28,46 @@ function Header() {
     const [isOpen, setIsOpen] = useState(false)
     const ref = useOutsideClick(closeMenu)
     const { isLoading, user } = useAuth()
+    const [scrolled, setScrolled] = useState(false)
 
     function closeMenu() {
         setIsOpen(false)
     }
 
     return (
-        <div className='container sticky top-[1rem] z-30 flex justify-between items-center !py-2 sm:grid sm:grid-cols-[1fr_2fr]'>
-            <Logo />
-            <div ref={ref} className={`absolute top-0 h-[calc(100vh-2rem)] w-[14rem] bg-secondary-900 
+        <header 
+        className={`sticky top-0 z-30 duration-300 pt-4`}>
+            <div className='container flex justify-between items-center sm:grid sm:grid-cols-[1fr_2fr]'>
+                <Logo />
+                <div ref={ref} className={`absolute top-0 h-[calc(100vh-2rem)] w-[14rem] bg-secondary-900 
             flex flex-col justify-between items-center rounded-[0_10px_10px_0] 
             ${isOpen ? 'left-0' : '-left-96'} my-4 p-4 transition-all duration-200 sm:h-auto 
             sm:bg-transparent sm:grid sm:grid-cols-2 sm:items-center sm:static sm:w-full sm:p-0 sm:m-0`}>
-                <nav className='flex flex-col w-full justify-self-center gap-4 sm:w-auto sm:flex-row'>
+                    <nav className='flex flex-col w-full justify-self-center gap-4 sm:w-auto sm:flex-row'>
+                        {
+                            navLinks.map(item => (
+                                <NavLink key={item.id} path={item.path}>{item.title}</NavLink>
+                            ))
+                        }
+                    </nav>
                     {
-                        navLinks.map(item => (
-                            <NavLink key={item.id} path={item.path}>{item.title}</NavLink>
-                        ))
+                        isLoading ? <LoadingSpinner width='30' height='20' />
+                            : user ?
+                                <User {...user} /> :
+                                <Link className='justify-self-end w-full sm:w-auto' href='/signin'>
+                                    <Button
+                                        className='w-full sm:w-auto'
+                                        variant='white'
+                                        onClick={() => { }}
+                                    >ورود | ثبت نام</Button>
+                                </Link>
                     }
-                </nav>
-                {
-                    isLoading ? <LoadingSpinner width='30' height='20' />
-                        : user ?
-                            <User {...user} /> :
-                            <Link className='justify-self-end w-full sm:w-auto' href='/signin'>
-                                <Button
-                                    className='w-full sm:w-auto'
-                                    variant='white'
-                                    onClick={() => { }}
-                                >ورود | ثبت نام</Button>
-                            </Link>
-                }
+                </div>
+                <ButtonIcon className='sm:hidden' variant='white' onClick={() => setIsOpen(true)}>
+                    <RiMenu2Fill />
+                </ButtonIcon>
             </div>
-            <ButtonIcon className='sm:hidden' variant='white' onClick={() => setIsOpen(true)}>
-                <RiMenu2Fill />
-            </ButtonIcon>
-        </div>
+        </header>
     )
 }
 

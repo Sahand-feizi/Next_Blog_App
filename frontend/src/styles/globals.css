@@ -111,6 +111,20 @@
   font-family: var(--font-kalameh);
 }
 
+header {
+  animation: changeHeader 1s linear;
+  animation-timeline: scroll();
+}
+
+@keyframes changeHeader {
+  0%{
+    background-color: transparent;
+  }
+  100%{
+    background-color: black;
+  }
+}
+
 body {
   background-color: var(--color-secondary-950);
   overflow-x: hidden;

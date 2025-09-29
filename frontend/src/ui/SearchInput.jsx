@@ -19,6 +19,10 @@ function SearchInput() {
             newParams.delete('search')
         }
         newParams.set('search', searchText)
+        if (!pathname.includes('blogs')) {
+            router.push(`/blogs?${newParams}`)
+            return null
+        }
         router.push(`${pathname}?${newParams}`)
     }
 
