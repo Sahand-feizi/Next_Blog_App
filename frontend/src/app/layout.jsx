@@ -1,6 +1,7 @@
 import kalamehFont from "@/constants/localFonts";
 import AuthProvider from "@/context/AuthContext";
 import "@/styles/globals.css";
+import { Toaster } from "react-hot-toast";
 
 export const metadata = {
   title: {
@@ -15,6 +16,7 @@ export default function RootLayout({ children }) {
     <html lang="fa" dir="rtl">
       <body className={`${kalamehFont.variable} sans`}>
         <AuthProvider>
+          <Toaster />
           {children}
         </AuthProvider>
       </body>
