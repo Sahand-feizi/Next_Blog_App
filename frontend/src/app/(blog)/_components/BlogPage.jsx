@@ -5,6 +5,7 @@ import React from 'react'
 import Author from './Author'
 import { IoCalendarOutline } from 'react-icons/io5'
 import RelatedBlog from './RelatedBlog'
+import BlogComments from './comment/BlogComments'
 
 async function BlogPage({ params }) {
     const blog = await getBlogBySlugApi(params.blogSlug)
@@ -46,6 +47,7 @@ async function BlogPage({ params }) {
                 {
                     blog.related.length > 0 && <RelatedBlog blogs={blog.related} />
                 }
+                <BlogComments blog={blog}/>
             </div>
         </div>
     )
