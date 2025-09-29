@@ -5,6 +5,7 @@ import Button from "@/ui/Button";
 import Modal from "@/ui/Modal";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
+import CreateCommentForm from "./CreateCommentForm";
 
 function BlogComments({ blog: { comments, _id: blogId } }) {
     const [isOpen, setIsOpen] = useState(false)
@@ -39,7 +40,7 @@ function BlogComments({ blog: { comments, _id: blogId } }) {
                     open={isOpen}
                     onClose={() => setIsOpen(false)}
                 >
-
+                    <CreateCommentForm />
                 </Modal>
                 <div className="space-y-8 post-comments bg-secondary-950 rounded-xl py-6 px-3 lg:px-6 ">
                     {comments.length > 0 ? (
