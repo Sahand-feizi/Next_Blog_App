@@ -1,5 +1,6 @@
 import React from 'react'
 import { CreateBlog } from '../_/component/Buttons'
+import CardWrapper from '../_/component/CardWrapper'
 
 function page() {
   return (
@@ -13,6 +14,7 @@ function page() {
         </div>
         <CreateBlog />
       </div>
+      <CardWrapper />
     </div>
   )
 }

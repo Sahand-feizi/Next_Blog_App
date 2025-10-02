@@ -1,7 +1,7 @@
 'use client'
 import { useAuth } from '@/context/AuthContext'
 import Button from '@/ui/Button'
-import { ArrowRightStartOnRectangleIcon, PlusIcon } from '@heroicons/react/24/outline'
+import { ArrowRightStartOnRectangleIcon, ArrowUpLeftIcon, ArrowUpRightIcon, PlusIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
 import React from 'react'
 
@@ -25,6 +25,19 @@ export function CreateBlog() {
         >
             <PlusIcon className='w-6 h-6' />
             <span className='hidden sm:flex'>بلاگ جدید</span>
+        </Link>
+    )
+}
+
+export function CardButton({ path }) {
+    return (
+        <Link
+            className='py-2 px-2 rounded-full bg-black text-secondary-0 
+        flex items-center group-hover:shadow-[0_8px_30px_rgb(0,0,0)] 
+        gap-2 font-medium shadow-[0_0px_20px_rgba(50,50,50)]'
+            href={path}
+        >
+            <ArrowUpLeftIcon className='w-6 h-6' />
         </Link>
     )
 }

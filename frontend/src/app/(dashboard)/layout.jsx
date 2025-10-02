@@ -8,7 +8,7 @@ function DashboardLayout({ children }) {
       <Sidbar />
       <div className='w-full space-y-4'>
         <Header />
-        <div className='p-4 rounded-full w-full bg-black'>
+        <div className='p-4 rounded-xl w-full bg-black'>
           {children}
         </div>
       </div>
