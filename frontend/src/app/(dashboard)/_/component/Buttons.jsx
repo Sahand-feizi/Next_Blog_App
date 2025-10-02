@@ -41,3 +41,15 @@ export function CardButton({ path, className }) {
         </Link>
     )
 }
+
+export function UsersButton({ className }) {
+    return (
+        <Link
+            className={`py-2 px-2 text-sm rounded-full text-secondary-900 bg-secondary-0
+        flex items-center gap-2 font-medium shadow-[0_0px_20px_rgba(50,50,50)] ${className}`}
+            href={'/profile/users'}
+        >
+            دیدن همه
+        </Link>
+    )
+}

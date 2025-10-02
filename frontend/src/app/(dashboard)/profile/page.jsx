@@ -2,6 +2,7 @@ import React, { Suspense } from 'react'
 import { CreateBlog } from '../_/component/Buttons'
 import CardWrapper from '../_/component/CardWrapper'
 import LoadingSpinner from '@/ui/LoadingSpinner'
+import UsersSection from '../_/component/UsersSection'
 
 function page() {
   return (
@@ -18,6 +19,9 @@ function page() {
       <Suspense fallback={<LoadingSpinner />}>
         <CardWrapper />
       </Suspense>
+      <div className="grid mt-2 grid-cols-12 gap-2">
+        <UsersSection />
+      </div>
     </div>
   )
 }

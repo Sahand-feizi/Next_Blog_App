@@ -56,7 +56,7 @@ const MenuOptions = [
 
 function Sidbar() {
     return (
-        <div className='bg-black flex flex-col pl-4 justify-between space-y-8 h-[95vh] lg:pl-10 py-6 rounded-xl'>
+        <div className='bg-black row-span-2 sticky top-4 flex flex-col pl-4 justify-between space-y-8 h-[95vh] lg:pl-6 py-6 rounded-xl'>
             <div className='flex flex-col gap-10'>
                 <SidbarLogo className={'pr-4'} />
                 <SidbarSection
