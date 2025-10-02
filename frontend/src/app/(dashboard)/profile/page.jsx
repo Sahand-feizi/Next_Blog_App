@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { CreateBlog } from '../_/component/Buttons'
 import CardWrapper from '../_/component/CardWrapper'
+import LoadingSpinner from '@/ui/LoadingSpinner'
 
 function page() {
   return (
@@ -14,7 +15,9 @@ function page() {
         </div>
         <CreateBlog />
       </div>
-      <CardWrapper />
+      <Suspense fallback={<LoadingSpinner />}>
+        <CardWrapper />
+      </Suspense>
     </div>
   )
 }

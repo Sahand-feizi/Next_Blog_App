@@ -5,13 +5,12 @@ import React from 'react'
 
 function SidbarProfile() {
     const { user } = useAuth()
-console.log(user);
 
     return (
         <div className='flex items-center gap-2'>
             <Avatar
                 path={user?.avatarUrl || '/images/avatar.png'}
-                alt={user?.name}
+                alt={user?.name || '-'}
                 width={'30'}
             />
             <div className='hidden sm:flex sm:flex-col'>

@@ -1,3 +1,4 @@
+import axios from "axios";
 import http from "./httpServices";
 
 export async function signupUserApi(data) {
@@ -18,4 +19,8 @@ export async function logoutUserApi() {
 
 export async function refreshTokenApi() {
     return await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/user/refresh-token`, { withCredentials: true }).then(({ data }) => data.data)
+}
+
+export async function getAllUsersApi(options) {
+    return await http.get('/user/list', options).then(({ data }) => data.data)
 }

@@ -13,7 +13,7 @@ function Card({ className, active, title, count, description, path }) {
           text-lg font-normal ${active && 'text-secondary-900'}`}>
           {title}
         </p>
-        <CardButton path={path} />
+        <CardButton path={path} className={`${active && 'shadow-[0_8px_30px_rgb(0,0,0)]'}`}/>
       </div>
       <h1 className={`text-[55px] text-secondary-0 group-hover/card:text-secondary-900 
       font-bold ${active && 'text-secondary-900'}`}>
