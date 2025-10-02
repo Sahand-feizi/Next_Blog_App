@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import React from 'react'
 import { LuSearch } from "react-icons/lu";
 
-function SearchInput() {
+function SearchInput({ className, containerClassName }) {
     const searchParams = useSearchParams()
     const router = useRouter()
     const pathname = usePathname()
@@ -19,8 +19,12 @@ function SearchInput() {
             newParams.delete('search')
         }
         newParams.set('search', searchText)
-        if (!pathname.includes('blogs')) {
+        if (pathname == '/') {
             router.push(`/blogs?${newParams}`)
+            return null
+        }
+        if (pathname.includes('/profile')) {
+            router.push(`/profile/blogs?${newParams}`)
             return null
         }
         router.push(`${pathname}?${newParams}`)
@@ -29,10 +33,10 @@ function SearchInput() {
     return (
         <form
             onSubmit={submitHandler}
-            className='flex items-center justify-between relative w-full z-20'
+            className={`flex items-center justify-between relative w-full z-20 ${containerClassName}`}
         >
             <input
-                className='Search_input z-20'
+                className={`Search_input z-20 ${className}`}
                 placeholder='جستجو  بلاگ ها، متن ها و ...'
                 name='search'
                 id='search'
