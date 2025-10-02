@@ -102,7 +102,7 @@
   }
 
   .sidbar_btn{
-    @apply flex items-center gap-3 !border-0 relative py-2 px-6 after:content-[""] after:h-full after:w-2 after:!rounded-[20px_0_0_20px] after:absolute after:top-0 after:right-0 bg-transparent 
+    @apply flex items-center gap-3 !border-0 relative py-2 lg:px-6 px-0 pr-5 after:content-[""] after:h-full after:w-2 after:!rounded-[20px_0_0_20px] after:absolute after:top-0 after:right-0 bg-transparent 
   }
 }
 

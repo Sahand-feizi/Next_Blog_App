@@ -14,7 +14,7 @@ function SidbarLink({ path, outlineIcon, solidIcon, title }) {
             href={path}
         >
             {pathname == path ? solidIcon : outlineIcon}
-            {title}
+            <span className='hidden lg:flex'>{title}</span>
         </Link>
     )
 }

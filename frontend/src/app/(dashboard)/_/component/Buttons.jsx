@@ -10,7 +10,7 @@ export function ExitButton() {
     return (
         <Button variant={'danger'} onClick={logout} className={'sidbar_btn'}>
             <ArrowRightStartOnRectangleIcon className='w-6 h-6'/>
-            خروج
+            <span className='hidden lg:flex'>خروج</span>
         </Button>
     )
 }
