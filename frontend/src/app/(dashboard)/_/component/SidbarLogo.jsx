@@ -1,7 +1,7 @@
 import Avatar from '@/ui/Avatar'
 import React from 'react'
 
-function Logo({className}) {
+function SidbarLogo({className}) {
     return (
         <div className={`flex items-center gap-x-2 ${className}`}>
             <Avatar
@@ -9,7 +9,7 @@ function Logo({className}) {
                 path='/images/logo.png'
                 width={34}
             />
-            <div>
+            <div className='hidden md:flex md:flex-col'>
                 <h3 className='text-base font-bold text-secondary-0'>وبسایت وبلاگ</h3>
                 <p className='text-xs font-thin text-secondary-0'>مرجع بلاگ های ایران و جهان</p>
             </div>
@@ -17,4 +17,4 @@ function Logo({className}) {
     )
 }
 
-export default Logo
+export default SidbarLogo

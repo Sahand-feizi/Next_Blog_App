@@ -100,7 +100,13 @@
   .Text_Area{
     @apply p-2 border border-primary-500 placeholder-secondary-300 text-secondary-0 font-normal text-base rounded-lg min-h-[10rem] w-full !pb-8 outline-0 hover:border-primary-900
   }
+
+  .sidbar_btn{
+    @apply flex items-center gap-3 !border-0 relative py-2 px-6 after:content-[""] after:h-full after:w-2 after:!rounded-[20px_0_0_20px] after:absolute after:top-0 after:right-0 bg-transparent 
+  }
 }
+
+@custom-variant child-first (& > :first-child);
 
 .container {
   padding: 0 1rem;
