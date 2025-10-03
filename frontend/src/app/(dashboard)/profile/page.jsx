@@ -3,7 +3,7 @@ import { CreateBlog } from '../_/component/Buttons'
 import CardWrapper from '../_/component/CardWrapper'
 import LoadingSpinner from '@/ui/LoadingSpinner'
 import UsersSection from '../_/component/UsersSection'
-
+import Chart from '../_/component/Chart'
 function page() {
   return (
     <div>
@@ -21,6 +21,7 @@ function page() {
       </Suspense>
       <div className="grid mt-2 grid-cols-12 gap-2">
         <UsersSection />
+        <Chart />
       </div>
     </div>
   )

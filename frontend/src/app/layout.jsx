@@ -1,7 +1,7 @@
 import kalamehFont from "@/constants/localFonts";
 import AuthProvider from "@/context/AuthContext";
-import "@/styles/globals.css";
 import ReactQueryProvider from "@/providers/ReactQueryProvider";
+import "@/styles/globals.css";
 import { Toaster } from "react-hot-toast";
 
 export const metadata = {
