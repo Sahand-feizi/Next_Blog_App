@@ -30,7 +30,7 @@ const kalamehFont = localFont({
     ],
     display:'block',
     style:'normal',
-    variable: '--font-kalameh'
+    variable: '--font-kalameh',
 })
 
 export default kalamehFont

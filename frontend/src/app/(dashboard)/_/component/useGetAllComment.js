@@ -34,5 +34,5 @@ export function useGetAllComment() {
         return count;
     });
 
-    return { comments: data.comments, ChartYearComment }
+    return {comments: data?.comments, ChartYearComment }
 }

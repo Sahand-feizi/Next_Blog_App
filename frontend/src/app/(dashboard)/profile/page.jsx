@@ -16,10 +16,10 @@ function page() {
         </div>
         <CreateBlog />
       </div>
-      <Suspense fallback={<LoadingSpinner />}>
-        <CardWrapper />
-      </Suspense>
-      <div className="grid mt-2 grid-cols-12 gap-2">
+      <div className='grid grid-cols-12 grid-rows-[12rem_12rem_12rem_auto] gap-2 w-full mt-4'>
+        <Suspense fallback={<LoadingSpinner />}>
+          <CardWrapper />
+        </Suspense>
         <UsersSection />
         <Chart />
       </div>

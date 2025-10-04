@@ -10,7 +10,7 @@ async function CardWrapper() {
     } = await fetchCardData()
 
     return (
-        <div className='grid grid-cols-12 gap-2 w-full mt-4'>
+        <>
             <Card
                 title={'همه بلاگ ها'}
                 description={"مجموع بلاگ ها از ماه گذشته"}
@@ -30,7 +30,7 @@ async function CardWrapper() {
                 path={'/profile/comments'}
                 count={numOfComments}
             />
-        </div>
+        </>
     )
 }
 

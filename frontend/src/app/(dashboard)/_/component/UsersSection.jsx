@@ -12,8 +12,8 @@ async function UsersSection() {
     const { users } = await getAllUsersApi(options)
 
     return (
-        <div className="space-y-2 bg-secondary-950 rounded-xl 
-        col-span-12 sm:col-span-6 md:col-span-4 p-4">
+        <div className="space-y-2 row-span-2 bg-secondary-950 rounded-xl 
+        col-span-12 sm:col-span-6 md:col-span-4 p-4 max-h-[23.5rem]">
             <div className="flex items-center justify-between">
                 <h3 className="text-xl font-bold text-secondary-0">کابران</h3>
                 <UsersButton />
