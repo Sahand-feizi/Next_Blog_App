@@ -53,3 +53,15 @@ export function UsersButton({ className }) {
         </Link>
     )
 }
+
+export function BlogsButton({ className }) {
+    return (
+        <Link
+            className={`py-2 px-2 text-sm rounded-full text-secondary-900 bg-secondary-0
+        flex items-center gap-2 font-medium ${className}`}
+            href={'/profile/blogs'}
+        >
+            دیدن همه
+        </Link>
+    )
+}

@@ -4,6 +4,7 @@ import CardWrapper from '../_/component/CardWrapper'
 import LoadingSpinner from '@/ui/LoadingSpinner'
 import UsersSection from '../_/component/UsersSection'
 import Chart from '../_/component/Chart'
+import AdvertisementCard from '../_/component/AdvertisementCard'
 function page() {
   return (
     <div>
@@ -20,6 +21,7 @@ function page() {
         <Suspense fallback={<LoadingSpinner />}>
           <CardWrapper />
         </Suspense>
+        <AdvertisementCard />
         <UsersSection />
         <Chart />
       </div>
