@@ -26,8 +26,8 @@ const MenuOptions = [
     },
     {
         id: 2,
-        title: 'پست ها',
-        path: '/profile/posts',
+        title: 'بلاگ ها',
+        path: '/profile/blogs',
         outlineIcon: <OutlineWalletIcon className='w-6 h-6' />,
         solidIcon: <SolidWalletIcon className='w-6 h-6' />
     },
