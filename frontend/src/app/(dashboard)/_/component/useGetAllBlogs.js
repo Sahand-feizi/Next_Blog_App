@@ -1,15 +1,13 @@
 import { useAuth } from '@/context/AuthContext'
 import { getBlogsApi } from '@/services/blogServices'
 import { useQuery } from '@tanstack/react-query'
-import queryString from 'query-string'
 
-function useGetAllBlogs(searchParams) {
+function useGetAllBlogs(queries) {
   const { user } = useAuth()
-  const queries = queryString.stringify(searchParams)
 
-  const { isPending: isLoading, data: blogs } = useQuery({
+  const { isPending: isLoading, data: blogs = [] } = useQuery({
     queryKey: ["blogs"],
-    queryFn: () => getBlogsApi(queries)
+    queryFn: () => getBlogsApi()
   })
 
   const myBlogs = blogs?.filter(blog => blog?.author?._id == user?._id)

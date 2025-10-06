@@ -2,7 +2,7 @@ import React from 'react'
 import { CardButton } from './Buttons'
 import { toPersianDigits } from '@/utils/numberFormater'
 
-function Card({ className, active, title, count, description, path }) {
+function Card({ className, active, title, count, description, path, isDisable = false, icon }) {
   return (
     <div className={`group/card col-span-12 sm:col-span-6 md:col-span-4 p-4 
       bg-secondary-950 bg-linear-to-tl duration-500
@@ -13,7 +13,13 @@ function Card({ className, active, title, count, description, path }) {
           text-lg font-normal ${active && 'text-secondary-900'}`}>
           {title}
         </p>
-        <CardButton path={path} className={`${active && 'shadow-[0_8px_30px_rgb(0,0,0)]'}`}/>
+        {
+          isDisable ?
+            <button path={path} className={`card_button ${active && 'shadow-[0_8px_30px_rgb(0,0,0)]'}`}>
+              {icon}
+            </button> :
+            <CardButton path={path} className={`${active && 'shadow-[0_8px_30px_rgb(0,0,0)]'}`} />
+        }
       </div>
       <h1 className={`text-[55px] text-secondary-0 group-hover/card:text-secondary-900 
       font-bold ${active && 'text-secondary-900'}`}>

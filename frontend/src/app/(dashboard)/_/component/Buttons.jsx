@@ -32,9 +32,7 @@ export function CreateBlog() {
 export function CardButton({ path, className }) {
     return (
         <Link
-            className={`py-2 px-2 rounded-full bg-black text-secondary-0 
-        flex items-center group-hover/card:shadow-[0_8px_30px_rgb(0,0,0)] 
-        gap-2 font-medium shadow-[0_0px_20px_rgba(50,50,50)] ${className}`}
+            className={`card_button ${className}`}
             href={path}
         >
             <ArrowUpLeftIcon className='w-6 h-6' />
