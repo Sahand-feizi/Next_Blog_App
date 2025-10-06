@@ -5,13 +5,15 @@ import { BiFilter } from 'react-icons/bi'
 import useOutsideClick from '@/hooks/useOutsideClick'
 import Button from '@/ui/Button'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
-function FilterForm({ children }) {
+function FilterForm({ children, className }) {
     const [isOpen, setIsOpen] = useState(false)
     const ref = useOutsideClick(() => setIsOpen(false), 'openButton')
+    const pathname = usePathname()
 
     return (
-        <>
+        <div className='relative md:w-full'>
             <ButtonIcon
                 id='openButton'
                 onClick={() => setIsOpen(prev => !prev)}
@@ -25,17 +27,17 @@ function FilterForm({ children }) {
                 ref={ref}
                 className={`${isOpen ? 'flex' : 'hidden md:flex'} absolute md:static flex-col  
                 bg-black rounded-xl animate-zoomIn p-2 gap-2 md:p-0 md:rounded-none
-                left-0 top-25 z-30 md:z-0 w-3xs md:w-full md:bg-transparent`}
+                left-0 top-10 z-30 md:z-0 w-3xs md:w-full md:bg-transparent ${className}`}
             >
                 <p className='flex md:hidden text-secondary-0 font-bold text-lg'>فیلتر ها</p>
                 {children}
-                <Link href={'/blogs'}>
+                <Link href={pathname}>
                     <Button variant={'primary'} className='w-full'>
                         بازیابی
                     </Button>
                 </Link>
             </div>
-        </>
+        </div>
     )
 }
 

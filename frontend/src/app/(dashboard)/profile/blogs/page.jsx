@@ -1,5 +1,6 @@
 import BlogsCardWrapper from 'app/(dashboard)/_/component/BlogsCardWrapper'
 import { CreateBlog } from 'app/(dashboard)/_/component/Buttons'
+import DashboardSearchBar from 'app/(dashboard)/_/component/DashboardSearchBar'
 import React from 'react'
 
 function BlogsPage({ searchParams }) {
@@ -14,8 +15,11 @@ function BlogsPage({ searchParams }) {
                 </div>
                 <CreateBlog />
             </div>
-            <div className='grid grid-cols-12 grid-rows-[12rem_12rem_12rem_auto] gap-2 w-full mt-4'>
+            <div className='grid grid-cols-12 gap-2 w-full mt-4'>
                 <BlogsCardWrapper />
+            </div>
+            <div className='mt-6 rounded-xl p-4 bg-secondary-950'>
+                <DashboardSearchBar />
             </div>
         </div>
     )
