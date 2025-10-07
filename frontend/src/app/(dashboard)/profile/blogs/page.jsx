@@ -1,9 +1,13 @@
 import BlogsCardWrapper from 'app/(dashboard)/_/component/BlogsCardWrapper'
+import BlogsTable from 'app/(dashboard)/_/component/BlogsTable'
 import { CreateBlog } from 'app/(dashboard)/_/component/Buttons'
 import DashboardSearchBar from 'app/(dashboard)/_/component/DashboardSearchBar'
+import queryString from 'query-string'
 import React from 'react'
 
 function BlogsPage({ searchParams }) {
+    const queries = queryString.stringify(searchParams) + '&limit=6';
+
     return (
         <div>
             <div className='flex items-center justify-between'>
@@ -20,6 +24,7 @@ function BlogsPage({ searchParams }) {
             </div>
             <div className='mt-6 rounded-xl p-4 bg-secondary-950'>
                 <DashboardSearchBar />
+                <BlogsTable queries={queries}/>
             </div>
         </div>
     )

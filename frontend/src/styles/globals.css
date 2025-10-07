@@ -108,6 +108,26 @@
   .card_button{
     @apply py-2 px-2 rounded-full bg-black text-secondary-0 flex items-center group-hover/card:shadow-[0_8px_30px_rgb(0,0,0)] gap-2 font-medium shadow-[0_0px_20px_rgba(50,50,50)]
   }
+
+  .badge{
+    @apply rounded-xl px-1.5 py-0.5 text-sm font-medium
+  }
+
+  .badge--green{
+    @apply bg-green-600/30 text-green-700
+  }
+
+  .badge--secondary{
+    @apply bg-secondary-200 text-secondary-800
+  }
+
+  .badge--yellow{
+    @apply bg-yellow-200 text-yellow-800
+  }
+
+  .badge--danger{
+    @apply bg-red-600/30 text-red-700
+  }
 }
 
 @custom-variant child-first (& > :first-child);
@@ -115,6 +135,33 @@
 .container {
   padding: 0 1rem;
   margin: auto
+}
+table {
+  margin-top: 10px;
+  border-collapse: collapse;
+  border-spacing: 0;
+  min-width: 100rem;
+}
+
+table .title-row {
+  background-color: rgb(var(--color-secondary-100));
+}
+
+table td,
+table th {
+  border-bottom: 1px solid rgb(var(--color-secondary-200));
+  text-align: right;
+}
+
+table th {
+  padding: 0.6rem 1rem;
+  color: rgb(var(--color-secondary-600));
+  font-size: 0.9rem;
+}
+table td {
+  font-size: 0.85rem;
+  padding: 1rem 1rem;
+  color: rgb(var(--color-secondary-600));
 }
 
 * {
