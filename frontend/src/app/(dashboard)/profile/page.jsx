@@ -5,9 +5,27 @@ import LoadingSpinner from '@/ui/LoadingSpinner'
 import UsersSection from '../_/component/UsersSection'
 import Chart from '../_/component/Chart'
 import AdvertisementCard from '../_/component/AdvertisementCard'
+import Breadcrumbs from '@/ui/Breadcrumbs'
+
+const breadcrumbs = [
+  {
+    id: 1,
+    path: '/',
+    title: 'خانه',
+    active: false
+  },
+  {
+    id: 2,
+    path: '/profile',
+    title: 'داشبورد',
+    active: true
+  }
+]
+
 function page() {
   return (
     <div>
+      <Breadcrumbs breadcrumbs={breadcrumbs}/>
       <div className='flex items-center justify-between'>
         <div className='space-y-2'>
           <h2 className='text-2xl md:text-3xl text-secondary-0 font-bold'>داشبورد</h2>
