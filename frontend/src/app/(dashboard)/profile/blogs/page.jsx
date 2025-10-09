@@ -1,10 +1,12 @@
 import Breadcrumbs from '@/ui/Breadcrumbs'
+import LoadingSpinner from '@/ui/LoadingSpinner'
 import BlogsCardWrapper from 'app/(dashboard)/_/component/BlogsCardWrapper'
 import BlogsTable from 'app/(dashboard)/_/component/BlogsTable'
 import { CreateBlog } from 'app/(dashboard)/_/component/Buttons'
 import DashboardSearchBar from 'app/(dashboard)/_/component/DashboardSearchBar'
+import Pagination from 'app/(dashboard)/_/component/Pagination'
 import queryString from 'query-string'
-import React from 'react'
+import React, { Suspense } from 'react'
 
 const breadcrumbs = [
     {
@@ -28,11 +30,16 @@ const breadcrumbs = [
 ]
 
 function BlogsPage({ searchParams }) {
-    const queries = queryString.stringify(searchParams) + '&limit=6';
+    let queries;
+    if (!queryString.stringify(searchParams).includes('limit')) {
+        queries = queryString.stringify(searchParams) + 'limit=5'
+    } else {
+        queries = queryString.stringify(searchParams)
+    }
 
     return (
         <div>
-            <Breadcrumbs breadcrumbs={breadcrumbs}/>
+            <Breadcrumbs breadcrumbs={breadcrumbs} />
             <div className='flex items-center justify-between'>
                 <div className='space-y-2'>
                     <h2 className='text-2xl md:text-3xl text-secondary-0 font-bold'>بلاگ ها</h2>
@@ -43,11 +50,15 @@ function BlogsPage({ searchParams }) {
                 <CreateBlog />
             </div>
             <div className='grid grid-cols-12 gap-2 w-full mt-4'>
-                <BlogsCardWrapper />
+                <Suspense fallback={<LoadingSpinner color='#fff' />}>
+                    <BlogsCardWrapper />
+                </Suspense>
             </div>
             <div className='mt-6 rounded-xl p-4 bg-secondary-950'>
                 <DashboardSearchBar />
-                <BlogsTable queries={queries}/>
+                <Suspense fallback={<LoadingSpinner color='#fff' />} key={queries}>
+                    <BlogsTable queries={queries} />
+                </Suspense>
             </div>
         </div>
     )

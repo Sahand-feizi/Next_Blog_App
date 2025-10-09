@@ -9,7 +9,7 @@ async function BlogsPage({ searchParams }) {
   const queries = queryString.stringify(searchParams);
   const cookiesStore = cookies()
   const options = setCookiesOnReq(cookiesStore)
-  const blogs = await getBlogsApi(queries, options)
+  const { blogs } = await getBlogsApi(queries, options)
 
   const { search: searchValue } = searchParams;
 

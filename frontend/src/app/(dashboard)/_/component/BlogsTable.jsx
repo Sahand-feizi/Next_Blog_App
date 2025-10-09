@@ -4,11 +4,16 @@ import setCookiesOnReq from '@/utils/setCookiesOnReq'
 import { cookies } from 'next/headers'
 import React from 'react'
 import BlogsTableRow from './BlogsTableRow'
+import Pagination from './Pagination'
 
 async function BlogsTable({ queries }) {
     const cookieStore = cookies()
     const options = setCookiesOnReq(cookieStore)
-    const blogs = await getBlogsApi(queries, options)
+    const { blogs, totalPages } = await getBlogsApi(queries, options)
+ 
+    if(blogs.length ==0){
+        return <p className='text-base py-4 text-secondary-400 font-normal'>بلاگی یافت نشد</p>
+    }
 
     return (
         <div className="grid">
@@ -37,6 +42,7 @@ async function BlogsTable({ queries }) {
                     }
                 </Table.Body>
             </Table>
+            <Pagination totalPages={totalPages}/>
         </div>
     )
 }

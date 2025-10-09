@@ -15,7 +15,7 @@ export async function fetchCardData() {
             getAllUsersApi(options)
         ])
 
-        const numOfBlogs = data[0].length;
+        const numOfBlogs = data[0].blogs.length;
         const numOfComments = data[1].commentsCount;
         const numOfUsers = data[2].users.length;
 

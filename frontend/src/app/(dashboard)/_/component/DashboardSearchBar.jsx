@@ -28,11 +28,11 @@ function DashboardSearchBar() {
             <SearchInput />
             <FilterForm className={'md:flex-row md:w-full'}>
                 <SelectInput
-                    optionClassName={'md:absolute md:top-12 md:w-full'}
+                    optionClassName={'md:absolute z-50 md:top-12 z-50 md:w-full'}
                     title='مرتب سازی' name={'sort'}
                     options={sortOptions}
                 />
-                <CategoriesList optionClassName={'md:absolute md:top-12 md:w-full'} />
+                <CategoriesList optionClassName={'md:absolute z-50 md:top-12 md:w-full'} />
             </FilterForm>
         </div>
     )

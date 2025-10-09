@@ -66,7 +66,7 @@ const swiperBreakpoints = {
 async function BlogSlider() {
     const cookiesStore = await cookies()
     const options = setCookiesOnReq(cookiesStore)
-    const popularBlogs = await getBlogsApi('sort=popular', options)
+    const {blogs: popularBlogs} = await getBlogsApi('sort=popular', options)
 
     if(!popularBlogs){
         return null

@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
 import { SlArrowUp } from 'react-icons/sl'
 
-function SelectInput({ title, options, name, optionClassName }) {
+function SelectInput({ title, options, name, optionClassName, btnClassName }) {
     const [isOpen, setIsOpen] = useState(false)
     const searchParams = useSearchParams()
     const pathname = usePathname()
@@ -21,14 +21,14 @@ function SelectInput({ title, options, name, optionClassName }) {
     return (
         <div className='relative flex flex-col gap-2 w-full'>
             <button onClick={() => setIsOpen(prev => !prev)} className={`btn w-full flex items-center 
-            justify-between !cursor-pointer bg-black border border-primary-900 text-primary-900 text-sm sm:text-base
+            justify-between ${btnClassName} !cursor-pointer gap-2 bg-black border border-primary-900 text-primary-900 text-sm sm:text-base
             ${isOpen && 'ring-2 ring-primary-800/40 border-2 border-primary-900/70'}`}>
                 <span>{title}</span>
-                <SlArrowUp className={`text-sm text-primary-900 transition-all duration-200
+                <SlArrowUp className={`text-sm  transition-all duration-200
                     font-black ${isOpen ? 'rotate-0' : 'rotate-180'}`} />
             </button>
             <ul className={`p-0 rounded-lg bg-black flex flex-col gap-2 overflow-hidden h-0 ${optionClassName}
-                ${isOpen && 'h-auto p-2 ring-2 ring-secondary-600/20 border-2 border-secondary-700/70'}`}>
+                ${isOpen && 'h-auto p-2  ring-2 ring-secondary-600/20 border-2 border-secondary-700/70'}`}>
                 {
                     options.map(item => (
                         <li

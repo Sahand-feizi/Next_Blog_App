@@ -6,8 +6,8 @@ export async function getBlogsApi(queries, options) {
         { ...options, credentials: 'include' }
     )
     const { data } = await res.json()
-    const { posts: blogs } = data || {};
-    return blogs
+    const { posts: blogs, totalPages } = data || {};
+    return { blogs, totalPages }
 }
 
 export async function getBlogBySlugApi(slug) {
