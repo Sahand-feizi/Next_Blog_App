@@ -98,7 +98,7 @@
   }
   
   .Text_Area{
-    @apply p-2 border border-primary-500 placeholder-secondary-300 text-secondary-0 font-normal text-base rounded-lg min-h-[10rem] w-full !pb-8 outline-0 hover:border-primary-900
+    @apply p-2 border border-primary-500 placeholder-secondary-300 text-secondary-0 font-normal text-base rounded-lg w-full !pb-8 outline-0 hover:border-primary-900
   }
 
   .sidbar_btn{

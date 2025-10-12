@@ -1,0 +1,132 @@
+"use client"
+import Button from '@/ui/Button'
+import FileInput from '@/ui/FileInput'
+import TextArea from '@/ui/TextArea'
+import TextField from '@/ui/TextField'
+import { useFormik } from 'formik'
+import { useState } from 'react'
+import * as yup from 'yup'
+import { BackButton } from './Buttons'
+import Image from 'next/image'
+
+const initialValues = {
+    title: '',
+    briefText: '',
+    text: '',
+    category: '',
+    readingTime: '',
+    tags: '',
+    slug: '',
+    coverImage: ''
+}
+
+const createNewBlogValidation = yup.object({
+    title: yup.string().required('این فیلد ضروری است')
+        .min(5, 'این فیلد باید بیشتر از 5 کاراکتر باشد')
+        .max(10, 'این فیلد باید کمتر از 10 کاراکتر باشد'),
+    briefText: yup.string().required('این فیلد ضروری است')
+        .min(10, 'این فیلد باید بیشتر از 10 کاراکتر باشد')
+        .max(15, 'این فیلد باید کمتر از 15 کاراکتر باشد'),
+    text: yup.string().required('این فیلد ضروری است')
+        .min(5, 'این فیلد باید بیشتر از 5 کاراکتر باشد')
+        .min(100, 'این فیلد باید بیشتر از 100 کاراکتر باشد'),
+    category: yup.string().required('این فیلد ضروری است'),
+    readingTime: yup.number().required('این فیلد ضروری است'),
+    tags: yup.string().required('این فیلد ضروری است'),
+    slug: yup.string().required('این فیلد ضروری است'),
+    coverImag: yup.string().required('این فیلد ضروری است'),
+}).required()
+
+function CreateBlogForm() {
+    const formik = useFormik({
+        initialValues: initialValues,
+        validationSchema: createNewBlogValidation,
+        onSubmit: (values) => {
+            console.log(values)
+        }
+    })
+    const [coverImage, setCoverImage] = useState(null)
+    
+
+    return (
+        <form onSubmit={formik.handleSubmit} className='grid grid-cols-12 mt-4 gap-4 w-full'>
+            <div className="relative col-span-12 min-h-[13rem]">
+                <Image
+                    src={coverImage || '/images/noImage.jpg'}
+                    fill
+                    alt='coverImage'
+                    className='object-cover'
+                />
+                <FileInput
+                    className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'
+                    labelValue={'عکس خود را آپلود کنید'}
+                    name={'coverImage'}
+                    isRequired
+                    onChange={(e) => {
+                        const file = e.target.files[0];
+                        formik.setFieldValue('coverImage', file);
+                        setCoverImage(URL.createObjectURL(file));
+                    }}
+                />
+            </div>
+            <TextField
+                name={'title'}
+                labelValue={'عنوان'}
+                formik={formik}
+                containerClassName={'!col-span-12 sm:!col-span-6'}
+                isRequired
+            />
+            <TextField
+                name={'briefText'}
+                labelValue={'متن کوتاه'}
+                formik={formik}
+                containerClassName={'!col-span-12 sm:!col-span-6'}
+                isRequired
+            />
+            <TextArea
+                maxLength={100}
+                value={formik.values.text}
+                setValue={(value) => formik.setFieldValue("text", value)}
+                name={'text'}
+                labelValue={'متن بلاگ'}
+                containerClassName={'!col-span-12 h-full row-span-2 sm:!col-span-6'}
+                className={'!h-full border-secondary-400 focus:!text-secondary-0'}
+                isRequired
+            />
+            <TextField
+                name={'category'}
+                labelValue={'دسته بندی'}
+                formik={formik}
+                containerClassName={'!col-span-12 sm:!col-span-6'}
+                isRequired
+            />
+            <TextField
+                name={'readingTime'}
+                labelValue={'زمان مطالعه'}
+                formik={formik}
+                containerClassName={'!col-span-12 sm:!col-span-6'}
+                isRequired
+            />
+            <TextField
+                name={'tags'}
+                labelValue={'تگ ها'}
+                formik={formik}
+                containerClassName={'!col-span-12 sm:!col-span-6'}
+                isRequired
+            />
+            <TextField
+                name={'tags'}
+                labelValue={'اسلاگ ها'}
+                formik={formik}
+                containerClassName={'!col-span-12 sm:!col-span-6'}
+                isRequired
+            />
+            <Button type={'submit'} variant={'white'} className={'font-medium col-span-12 sm:col-span-6 lg:col-span-3'}>
+                ایجاد پست جدید
+            </Button>
+            <BackButton className={'font-medium col-span-12 sm:col-span-6 lg:col-span-3'} />
+        </form>
+    )
+}
+
+export default CreateBlogForm

@@ -32,6 +32,7 @@ function CreateCommentForm({ blogId, parentId, onClose }) {
                 labelValue={'متن نظر'}
                 name={'text'}
                 maxLength={100}
+                className={'!min-h-[10rem]'}
                 value={text}
                 setValue={setText}
             />

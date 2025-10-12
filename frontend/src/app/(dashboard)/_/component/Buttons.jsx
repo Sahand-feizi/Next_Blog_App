@@ -3,6 +3,7 @@ import { useAuth } from '@/context/AuthContext'
 import Button from '@/ui/Button'
 import { ArrowRightStartOnRectangleIcon, ArrowUpLeftIcon, ArrowUpRightIcon, PlusIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import React from 'react'
 
 export function ExitButton() {
@@ -61,5 +62,22 @@ export function BlogsButton({ className }) {
         >
             دیدن همه
         </Link>
+    )
+}
+
+export function BackButton({ className }) {
+    const router = useRouter()
+
+    return (
+        <Button
+            className={className}
+            onClick={(e) => {
+                e.preventDefault()
+                router.back()
+            }}
+            variant={'outline'}
+        >
+            بازگشت
+        </Button>
     )
 }

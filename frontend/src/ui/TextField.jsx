@@ -7,11 +7,12 @@ function TextField({
     type = 'text',
     dir = 'rtl',
     formik,
+    containerClassName,
     className,
     ...rest
 }) {
     return (
-        <div className='flex flex-start flex-col gap-1 z-20'>
+        <div className={`flex flex-start flex-col gap-1 z-20 ${containerClassName}`}>
             <label htmlFor={name} className={`text-sm text-secondary-300 font-bold z-20`}>
                 {labelValue}
                 {!isRequired && '(اختیاری)'}
