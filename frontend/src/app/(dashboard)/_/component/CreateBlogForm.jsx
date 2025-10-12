@@ -8,6 +8,8 @@ import { useState } from 'react'
 import * as yup from 'yup'
 import { BackButton } from './Buttons'
 import Image from 'next/image'
+import useGetCategories from './useGetCategories'
+import FormikSelectInput from '@/ui/FormikSelectInput'
 
 const initialValues = {
     title: '',
@@ -46,7 +48,8 @@ function CreateBlogForm() {
         }
     })
     const [coverImage, setCoverImage] = useState(null)
-    
+    const { selectCategories } = useGetCategories()
+
 
     return (
         <form onSubmit={formik.handleSubmit} className='grid grid-cols-12 mt-4 gap-4 w-full'>
@@ -93,7 +96,8 @@ function CreateBlogForm() {
                 className={'!h-full border-secondary-400 focus:!text-secondary-0'}
                 isRequired
             />
-            <TextField
+            <FormikSelectInput
+                options={[{ _id: 1, value: 1, title: 'فیلد خود را انتخاب کنید' }, ...selectCategories]}
                 name={'category'}
                 labelValue={'دسته بندی'}
                 formik={formik}
@@ -115,7 +119,7 @@ function CreateBlogForm() {
                 isRequired
             />
             <TextField
-                name={'tags'}
+                name={'slug'}
                 labelValue={'اسلاگ ها'}
                 formik={formik}
                 containerClassName={'!col-span-12 sm:!col-span-6'}
