@@ -10,6 +10,8 @@ import { BackButton } from './Buttons'
 import Image from 'next/image'
 import useGetCategories from './useGetCategories'
 import FormikSelectInput from '@/ui/FormikSelectInput'
+import { useCreateBlog } from './useCreateBlog'
+import LoadingSpinner from '@/ui/LoadingSpinner'
 
 const initialValues = {
     title: '',
@@ -17,7 +19,6 @@ const initialValues = {
     text: '',
     category: '',
     readingTime: '',
-    tags: '',
     slug: '',
     coverImage: ''
 }
@@ -25,31 +26,35 @@ const initialValues = {
 const createNewBlogValidation = yup.object({
     title: yup.string().required('این فیلد ضروری است')
         .min(5, 'این فیلد باید بیشتر از 5 کاراکتر باشد')
-        .max(10, 'این فیلد باید کمتر از 10 کاراکتر باشد'),
+        .max(15, 'این فیلد باید کمتر از 15 کاراکتر باشد'),
     briefText: yup.string().required('این فیلد ضروری است')
         .min(10, 'این فیلد باید بیشتر از 10 کاراکتر باشد')
-        .max(15, 'این فیلد باید کمتر از 15 کاراکتر باشد'),
+        .max(25, 'این فیلد باید کمتر از 25 کاراکتر باشد'),
     text: yup.string().required('این فیلد ضروری است')
-        .min(5, 'این فیلد باید بیشتر از 5 کاراکتر باشد')
-        .min(100, 'این فیلد باید بیشتر از 100 کاراکتر باشد'),
+        .min(10, 'این فیلد باید بیشتر از 10 کاراکتر باشد')
+        .max(100, 'این فیلد باید کمتر از 100 کاراکتر باشد'),
     category: yup.string().required('این فیلد ضروری است'),
     readingTime: yup.number().required('این فیلد ضروری است'),
-    tags: yup.string().required('این فیلد ضروری است'),
     slug: yup.string().required('این فیلد ضروری است'),
-    coverImag: yup.string().required('این فیلد ضروری است'),
+    coverImage: yup.mixed().required('این فیلد ضروری است'),
 }).required()
 
 function CreateBlogForm() {
+    const { createNewBlog, isCreating } = useCreateBlog()
     const formik = useFormik({
         initialValues: initialValues,
         validationSchema: createNewBlogValidation,
-        onSubmit: (values) => {
-            console.log(values)
+        onSubmit: async (data) => {
+            const formData = new FormData();
+            for (const key in data) {
+                formData.append(key, data[key])
+            }
+
+            await createNewBlog(formData)
         }
     })
     const [coverImage, setCoverImage] = useState(null)
     const { selectCategories } = useGetCategories()
-
 
     return (
         <form onSubmit={formik.handleSubmit} className='grid grid-cols-12 mt-4 gap-4 w-full'>
@@ -65,8 +70,8 @@ function CreateBlogForm() {
                     labelValue={'عکس خود را آپلود کنید'}
                     name={'coverImage'}
                     isRequired
-                    onChange={(e) => {
-                        const file = e.target.files[0];
+                    onChange={(event) => {
+                        const file = event.target.files[0];
                         formik.setFieldValue('coverImage', file);
                         setCoverImage(URL.createObjectURL(file));
                     }}
@@ -112,13 +117,6 @@ function CreateBlogForm() {
                 isRequired
             />
             <TextField
-                name={'tags'}
-                labelValue={'تگ ها'}
-                formik={formik}
-                containerClassName={'!col-span-12 sm:!col-span-6'}
-                isRequired
-            />
-            <TextField
                 name={'slug'}
                 labelValue={'اسلاگ ها'}
                 formik={formik}
@@ -126,7 +124,11 @@ function CreateBlogForm() {
                 isRequired
             />
             <Button type={'submit'} variant={'white'} className={'font-medium col-span-12 sm:col-span-6 lg:col-span-3'}>
-                ایجاد پست جدید
+                {
+                    isCreating ?
+                        <LoadingSpinner height='30' width='30' color='#000' /> :
+                        'ایجاد پست جدید'
+                }
             </Button>
             <BackButton className={'font-medium col-span-12 sm:col-span-6 lg:col-span-3'} />
         </form>

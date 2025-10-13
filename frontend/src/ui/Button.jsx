@@ -8,11 +8,12 @@ const btnTypes = {
     outline: 'btn--outline'
 }
 
-function Button({ children, variant, onClick, className, ...rest }) {
+function Button({ children, variant, onClick, className, type, ...rest }) {
     return (
         <button
             className={`btn ${btnTypes[variant]} ${className}`}
             onClick={onClick}
+            type={type}
             {...rest}
         >
             {children}

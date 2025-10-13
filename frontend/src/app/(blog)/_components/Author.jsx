@@ -6,7 +6,7 @@ function Author({avatarUrl, name}) {
     <div className='flex items-center gap-2'>
       <Avatar 
         alt={name}
-        path={avatarUrl}
+        path={avatarUrl || '/images/avatar.png'}
       />
       <p className='text-secondary-0 font-bold text-sm'>{name}</p>
     </div>

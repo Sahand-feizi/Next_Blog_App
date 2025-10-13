@@ -24,3 +24,7 @@ export async function likeBlogsApi(blogId) {
 export async function bookmarkBlogsApi(blogId) {
     return await http.post(`/post/bookmark/${blogId}`).then(({ data }) => data.data)
 }
+
+export async function createBlogApi(data, options) {
+    return await http.post(`/post/create`, data, options).then(({ data }) => data.data)
+}
