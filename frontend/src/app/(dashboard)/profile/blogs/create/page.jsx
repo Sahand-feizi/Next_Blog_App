@@ -29,6 +29,10 @@ const breadcrumbs = [
     },
 ]
 
+export const metadata = {
+    title: 'ایجاد بلاگ جدید'
+}
+
 function CreateBlogPage() {
     return (
         <div>

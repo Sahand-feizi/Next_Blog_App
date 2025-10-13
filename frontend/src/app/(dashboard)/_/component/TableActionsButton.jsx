@@ -24,7 +24,7 @@ function TableActionsButton({ title, slug, _id }) {
                 />
             </Modal>
             <EditButton
-                path={`/profile/blogs/edit/${slug}`}
+                path={`/profile/blogs/edit/${_id}`}
                 className={`cursor-pointer`}
             />
             <ButtonIcon

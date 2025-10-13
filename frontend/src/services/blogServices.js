@@ -32,3 +32,7 @@ export async function createBlogApi(data, options) {
 export async function deleteBlogApi(blogId) {
     return await http.delete(`/post/remove/${blogId}`).then(({ data }) => data.data)
 }
+
+export async function getBlogByIdApi(blogId) {
+    return await http.get(`/post/${blogId}`).then(({ data }) => data.data)
+}
