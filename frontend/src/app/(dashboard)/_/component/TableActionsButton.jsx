@@ -4,8 +4,9 @@ import { EditButton } from './Buttons';
 import ButtonIcon from '@/ui/ButtonIcon';
 import { TrashIcon } from '@heroicons/react/24/outline';
 import Modal from '@/ui/Modal';
+import DeleteBlogForm from './DeleteBlogForm';
 
-function TableActionsButton({ title, slug }) {
+function TableActionsButton({ title, slug, _id }) {
     const [isOpen, setIsOpen] = useState(false)
 
     return (
@@ -16,7 +17,11 @@ function TableActionsButton({ title, slug }) {
                 title={'حذف بلاگ'}
                 description={title}
             >
-
+                <DeleteBlogForm
+                    _id={_id}
+                    title={title}
+                    onClose={() => setIsOpen(false)}
+                />
             </Modal>
             <EditButton
                 path={`/profile/blogs/edit/${slug}`}

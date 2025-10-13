@@ -28,3 +28,7 @@ export async function bookmarkBlogsApi(blogId) {
 export async function createBlogApi(data, options) {
     return await http.post(`/post/create`, data, options).then(({ data }) => data.data)
 }
+
+export async function deleteBlogApi(blogId) {
+    return await http.delete(`/post/remove/${blogId}`).then(({ data }) => data.data)
+}

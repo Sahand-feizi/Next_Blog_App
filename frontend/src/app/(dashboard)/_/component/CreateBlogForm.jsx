@@ -12,6 +12,7 @@ import useGetCategories from './useGetCategories'
 import FormikSelectInput from '@/ui/FormikSelectInput'
 import { useCreateBlog } from './useCreateBlog'
 import LoadingSpinner from '@/ui/LoadingSpinner'
+import { useRouter } from 'next/navigation'
 
 const initialValues = {
     title: '',
@@ -41,6 +42,7 @@ const createNewBlogValidation = yup.object({
 
 function CreateBlogForm() {
     const { createNewBlog, isCreating } = useCreateBlog()
+    const router = useRouter()
     const formik = useFormik({
         initialValues: initialValues,
         validationSchema: createNewBlogValidation,
@@ -50,7 +52,11 @@ function CreateBlogForm() {
                 formData.append(key, data[key])
             }
 
-            await createNewBlog(formData)
+            await createNewBlog(formData, {
+                onSuccess: () => {
+                    router.push('/profile/blogs')
+                }
+            })
         }
     })
     const [coverImage, setCoverImage] = useState(null)
