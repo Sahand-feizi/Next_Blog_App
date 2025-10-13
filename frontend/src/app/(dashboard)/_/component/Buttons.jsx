@@ -1,7 +1,8 @@
 'use client'
 import { useAuth } from '@/context/AuthContext'
 import Button from '@/ui/Button'
-import { ArrowRightStartOnRectangleIcon, ArrowUpLeftIcon, ArrowUpRightIcon, PlusIcon } from '@heroicons/react/24/outline'
+import ButtonIcon from '@/ui/ButtonIcon'
+import { ArrowRightStartOnRectangleIcon, ArrowUpLeftIcon, ArrowUpRightIcon, PencilSquareIcon, PlusIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import React from 'react'
@@ -79,5 +80,19 @@ export function BackButton({ className }) {
         >
             بازگشت
         </Button>
+    )
+}
+
+export function EditButton({ className, path }) {
+
+    return (
+        <Link href={path}>
+            <ButtonIcon
+                className={className}
+                variant={'secondary'}
+            >
+                <PencilSquareIcon className='w-6 h-6' />
+            </ButtonIcon>
+        </Link>
     )
 }

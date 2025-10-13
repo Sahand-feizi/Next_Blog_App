@@ -1,6 +1,7 @@
 import Table from '@/ui/Table'
 import toLocalDateShort from '@/utils/dateFormatter';
 import React from 'react'
+import TableActionsButton from './TableActionsButton';
 
 function BlogsTableRow({ index, blog }) {
   const {
@@ -41,14 +42,14 @@ function BlogsTableRow({ index, blog }) {
       </td>
       <td>{author.name}</td>
       <td>
-        <div className={`w-3 h-3 rounded-full ${isLiked ? 
-          'bg-green-700/60' : 
+        <div className={`w-3 h-3 rounded-full ${isLiked ?
+          'bg-green-700/60' :
           'bg-error/60'}`}></div>
       </td>
       <td>
         <div className={`w-3 h-3 rounded-full ${isBookmarked ?
-           'bg-green-700/60' : 
-           'bg-error/60'}`}></div>
+          'bg-green-700/60' :
+          'bg-error/60'}`}></div>
       </td>
       <td>
         <span className={`badge ${type == 'free' ? 'badge--green' :
@@ -60,7 +61,9 @@ function BlogsTableRow({ index, blog }) {
       </td>
       <td>{toLocalDateShort(createdAt, dateOptions)}</td>
       <td>{toLocalDateShort(updatedAt, dateOptions)}</td>
-      <td>actions</td>
+      <td>
+        <TableActionsButton {...blog}/>
+      </td>
     </Table.Row>
   )
 }
