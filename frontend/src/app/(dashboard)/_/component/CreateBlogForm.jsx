@@ -14,15 +14,6 @@ import { useCreateBlog } from './useCreateBlog'
 import LoadingSpinner from '@/ui/LoadingSpinner'
 import { useRouter } from 'next/navigation'
 
-const initialValues = {
-    title: '',
-    briefText: '',
-    text: '',
-    category: '',
-    readingTime: '',
-    slug: '',
-    coverImage: ''
-}
 
 const createNewBlogValidation = yup.object({
     title: yup.string().required('این فیلد ضروری است')
@@ -40,7 +31,27 @@ const createNewBlogValidation = yup.object({
     coverImage: yup.mixed().required('این فیلد ضروری است'),
 }).required()
 
-function CreateBlogForm() {
+function CreateBlogForm({ blog }) {
+    let initialValues = {
+        title: '',
+        briefText: '',
+        text: '',
+        category: '',
+        readingTime: '',
+        slug: '',
+        coverImage: ''
+    }
+    if (blog) {
+        initialValues = {
+            title: blog?.title,
+            briefText: blog?.briefText,
+            text: blog?.text,
+            category: blog?.category?._id,
+            readingTime: blog?.readingTime,
+            slug: blog?.slug,
+            coverImage: blog?.coverImage
+        }
+    }
     const { createNewBlog, isCreating } = useCreateBlog()
     const router = useRouter()
     const formik = useFormik({
@@ -59,7 +70,7 @@ function CreateBlogForm() {
             })
         }
     })
-    const [coverImage, setCoverImage] = useState(null)
+    const [coverImage, setCoverImage] = useState(blog?.coverImageUrl || '')
     const { selectCategories } = useGetCategories()
 
     return (
@@ -129,14 +140,22 @@ function CreateBlogForm() {
                 containerClassName={'!col-span-12 sm:!col-span-6'}
                 isRequired
             />
-            <Button type={'submit'} variant={'white'} className={'font-medium col-span-12 sm:col-span-6 lg:col-span-3'}>
-                {
-                    isCreating ?
-                        <LoadingSpinner height='30' width='30' color='#000' /> :
-                        'ایجاد پست جدید'
-                }
-            </Button>
-            <BackButton className={'font-medium col-span-12 sm:col-span-6 lg:col-span-3'} />
+            <div className="col-span-12 grid grid-cols-12 gap-3">
+                <Button
+                    disabled={formik.errors}
+                    type={'submit'}
+                    variant={'white'}
+                    className={`font-medium disabled:bg-secondary-400 disabled:cursor-not-allowed 
+                        disabled:text-secondary-700 col-span-12 sm:col-span-6 lg:col-span-3`}
+                >
+                    {
+                        isCreating ?
+                            <LoadingSpinner height='30' width='30' color='#000' /> :
+                            blog ? 'آپدیت پست' : 'ایجاد پست جدید'
+                    }
+                </Button>
+                <BackButton className={'font-medium col-span-12 sm:col-span-6 lg:col-span-3'} />
+            </div>
         </form>
     )
 }
