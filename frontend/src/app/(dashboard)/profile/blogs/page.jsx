@@ -30,12 +30,9 @@ const breadcrumbs = [
 ]
 
 function BlogsPage({ searchParams }) {
-    let queries;
-    if (!queryString.stringify(searchParams).includes('limit')) {
-        queries = queryString.stringify(searchParams) + 'limit=5'
-    } else {
-        queries = queryString.stringify(searchParams)
-    }
+    const queries = !queryString.stringify(searchParams).includes('limit') ? 
+    `${queryString.stringify(searchParams)}&limit=5`: 
+    queryString.stringify(searchParams);
 
     return (
         <div>

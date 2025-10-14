@@ -9,6 +9,7 @@ import Pagination from './Pagination'
 async function BlogsTable({ queries }) {
     const cookieStore = cookies()
     const options = setCookiesOnReq(cookieStore)
+    console.log(queries)
     const { blogs, totalPages } = await getBlogsApi(queries, options)
  
     if(blogs.length ==0){
