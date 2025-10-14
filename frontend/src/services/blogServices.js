@@ -36,3 +36,7 @@ export async function deleteBlogApi(blogId) {
 export async function getBlogByIdApi(blogId) {
     return await http.get(`/post/${blogId}`).then(({ data }) => data.data)
 }
+
+export async function editBlogApi({ blogId, data }) {
+    return await http.patch(`/post/update/${blogId}`, data).then(({ data }) => data.data)
+}

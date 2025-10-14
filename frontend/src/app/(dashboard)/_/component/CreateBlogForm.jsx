@@ -13,6 +13,7 @@ import FormikSelectInput from '@/ui/FormikSelectInput'
 import { useCreateBlog } from './useCreateBlog'
 import LoadingSpinner from '@/ui/LoadingSpinner'
 import { useRouter } from 'next/navigation'
+import useEditBlog from './useEditBlog'
 
 
 const createNewBlogValidation = yup.object({
@@ -63,15 +64,24 @@ function CreateBlogForm({ blog }) {
                 formData.append(key, data[key])
             }
 
-            await createNewBlog(formData, {
-                onSuccess: () => {
-                    router.push('/profile/blogs')
-                }
-            })
+            if (blog) {
+                await editBlog({ blogId: blog?._id, data: formData }, {
+                    onSuccess: () => {
+                        router.push('/profile/blogs')
+                    }
+                })
+            } else {
+                await createNewBlog(formData, {
+                    onSuccess: () => {
+                        router.push('/profile/blogs')
+                    }
+                })
+            }
         }
     })
     const [coverImage, setCoverImage] = useState(blog?.coverImageUrl || '')
     const { selectCategories } = useGetCategories()
+    const { isEditing, editBlog } = useEditBlog()
 
     return (
         <form onSubmit={formik.handleSubmit} className='grid grid-cols-12 mt-4 gap-4 w-full'>
@@ -142,14 +152,12 @@ function CreateBlogForm({ blog }) {
             />
             <div className="col-span-12 grid grid-cols-12 gap-3">
                 <Button
-                    disabled={formik.errors}
                     type={'submit'}
                     variant={'white'}
-                    className={`font-medium disabled:bg-secondary-400 disabled:cursor-not-allowed 
-                        disabled:text-secondary-700 col-span-12 sm:col-span-6 lg:col-span-3`}
+                    className={`font-medium col-span-12 sm:col-span-6 lg:col-span-3`}
                 >
                     {
-                        isCreating ?
+                        isCreating || isEditing ?
                             <LoadingSpinner height='30' width='30' color='#000' /> :
                             blog ? 'آپدیت پست' : 'ایجاد پست جدید'
                     }
