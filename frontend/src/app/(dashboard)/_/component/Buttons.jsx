@@ -31,6 +31,20 @@ export function CreateBlog() {
     )
 }
 
+export function CreateCategory() {
+    return (
+        <Link
+            className='py-2 px-2 sm:px-3 rounded-full bg-secondary-0 text-secondary-800 
+            flex items-center gap-2 font-medium'
+            href={'/profile/categories/create'}
+        >
+            <PlusIcon className='w-6 h-6' />
+            <span className='hidden sm:flex'>دسته بندی جدید</span>
+        </Link>
+    )
+}
+
+
 export function CardButton({ path, className }) {
     return (
         <Link
