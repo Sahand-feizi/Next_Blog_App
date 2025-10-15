@@ -4,7 +4,6 @@ import BlogsCardWrapper from 'app/(dashboard)/_/component/BlogsCardWrapper'
 import BlogsTable from 'app/(dashboard)/_/component/BlogsTable'
 import { CreateBlog } from 'app/(dashboard)/_/component/Buttons'
 import DashboardSearchBar from 'app/(dashboard)/_/component/DashboardSearchBar'
-import Pagination from 'app/(dashboard)/_/component/Pagination'
 import queryString from 'query-string'
 import React, { Suspense } from 'react'
 
