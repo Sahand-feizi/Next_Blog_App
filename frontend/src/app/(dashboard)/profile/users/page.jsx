@@ -1,6 +1,5 @@
 import Breadcrumbs from '@/ui/Breadcrumbs'
 import LoadingSpinner from '@/ui/LoadingSpinner'
-import DashboardSearchBar from 'app/(dashboard)/_/component/DashboardSearchBar'
 import UsersTable from 'app/(dashboard)/_/component/UsersTable'
 import React, { Suspense } from 'react'
 

@@ -8,6 +8,7 @@ import { BackButton } from './Buttons'
 import * as yup from 'yup'
 import useCreateCategory from './useCreateCategory'
 import { useRouter } from 'next/navigation'
+import { useEditCategory } from './useEditCategory'
 
 const categorySchema = yup.object({
     title: yup.string()
@@ -24,26 +25,34 @@ const categorySchema = yup.object({
         .required('این فیلد اجباری است')
 }).required()
 
-function CreateAndEditCategoryForm({ blog }) {
+function CreateAndEditCategoryForm({ category }) {
     const initialValues = {
-        title: '',
-        englishTitle: '',
-        description: '',
+        title: category?.title || '',
+        englishTitle: category?.englishTitle || '',
+        description: category?.description || '',
     }
     const router = useRouter()
     const { isCreating, createCategory } = useCreateCategory()
+    const { isEditing, editCategory } = useEditCategory()
     const formik = useFormik({
         initialValues: initialValues,
         validationSchema: categorySchema,
         onSubmit: async (data) => {
-            await createCategory(data, {
-                onSuccess: () => {
-                    router.push('/profile/categories')
-                }
-            })
+            if (category) {
+                await editCategory({ categoryId: category._id, data }, {
+                    onSuccess: () => {
+                        router.push('/profile/categories')
+                    }
+                })
+            } else {
+                await createCategory(data, {
+                    onSuccess: () => {
+                        router.push('/profile/categories')
+                    }
+                })
+            }
         }
     })
-    const isEditing = false;
 
     return (
         <form onSubmit={formik.handleSubmit} className='grid grid-cols-12 mt-4 gap-4 w-full'>
@@ -77,7 +86,7 @@ function CreateAndEditCategoryForm({ blog }) {
                     {
                         isCreating || isEditing ?
                             <LoadingSpinner height='30' width='30' color='#000' /> :
-                            blog ? 'آپدیت پست' : 'ایجاد پست جدید'
+                            category ? 'آپدیت پست' : 'ایجاد پست جدید'
                     }
                 </Button>
                 <BackButton className={'font-medium col-span-12 sm:col-span-6 lg:col-span-3'} />

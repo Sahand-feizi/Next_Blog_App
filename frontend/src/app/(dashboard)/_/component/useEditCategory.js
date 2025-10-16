@@ -1,10 +1,10 @@
-import { editBlogApi } from "@/services/blogServices";
+import { editCategoryApi } from "@/services/categoriesServices";
 import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 
-export default function useEditBlog() {
-    const {isPending: isEditing, mutate: editBlog} = useMutation({
-        mutationFn: editBlogApi,
+export function useEditCategory() {
+    const { isPending: isEditing, mutate: editCategory } = useMutation({
+        mutationFn: editCategoryApi,
         onSuccess: ({ message }) => {
             toast.success(message)
         },
@@ -13,5 +13,5 @@ export default function useEditBlog() {
         }
     })
 
-    return {isEditing, editBlog}
+    return { isEditing, editCategory }
 }

@@ -2,7 +2,7 @@
 import { useAuth } from '@/context/AuthContext'
 import Button from '@/ui/Button'
 import ButtonIcon from '@/ui/ButtonIcon'
-import { ArrowRightStartOnRectangleIcon, ArrowUpLeftIcon, ArrowUpRightIcon, PencilSquareIcon, PlusIcon } from '@heroicons/react/24/outline'
+import { ArrowRightStartOnRectangleIcon, ArrowUpLeftIcon, PencilSquareIcon, PlusIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import React from 'react'

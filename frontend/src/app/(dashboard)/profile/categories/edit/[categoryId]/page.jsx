@@ -1,24 +1,25 @@
-import { getBlogByIdApi } from "@/services/blogServices";
+import { getCategoryByIdApi } from "@/services/categoriesServices";
 import Breadcrumbs from "@/ui/Breadcrumbs"
 import LoadingSpinner from "@/ui/LoadingSpinner";
-import EditBlogForm from "app/(dashboard)/_/component/EditBlogForm";
+import EditCategoryForm from "app/(dashboard)/_/component/EditCategoryForm";
 import { Suspense } from "react";
 
 export async function generateMetadata({ params }) {
-    const { blogId } = params;
+    const { categoryId } = params;
 
     try {
-        const { post: blog } = await getBlogByIdApi(blogId)
+        const { category } = await getCategoryByIdApi(categoryId)
+        
         return {
-            title: blog.title,
+            title: category.title,
         }
     } catch (error) {
         Promise.reject(error)
     }
 }
 
-function EditBlogPage({ params }) {
-    const { blogId } = params;
+function EditCategoryPage({ params }) {
+    const { categoryId } = params;
 
     const breadcrumbs = [
         {
@@ -35,14 +36,14 @@ function EditBlogPage({ params }) {
         },
         {
             id: 3,
-            path: '/profile/blogs',
-            title: 'بلاگ ها',
+            path: '/profile/categories',
+            title: 'دسته بندی ها',
             active: false
         },
         {
             id: 4,
-            path: `/profile/blogs/edit/${blogId}`,
-            title: 'آپدیت بلاگ',
+            path: `/profile/categories/edit/${categoryId}`,
+            title: 'آپدیت دسته بندی',
             active: true
         },
     ]
@@ -50,16 +51,16 @@ function EditBlogPage({ params }) {
         <div>
             <Breadcrumbs breadcrumbs={breadcrumbs} />
             <div className='space-y-2'>
-                <h2 className='text-2xl md:text-3xl text-secondary-0 font-bold'>آپدیت بلاگ</h2>
+                <h2 className='text-2xl md:text-3xl text-secondary-0 font-bold'>آپدیت دسته بندی</h2>
                 <p className='text-sm hidden sm:flex text-secondary-300 font-normal'>
-                    آپدیت بلاگ ها و انتخاب عکس و ...
+                    آپدیت دسته بندی و انتخاب عنوان جدید و ...
                 </p>
             </div>
             <Suspense fallback={<LoadingSpinner />}>
-                <EditBlogForm blogId={blogId} />
+                <EditCategoryForm categoryId={categoryId} />
             </Suspense>
         </div>
     )
 }
 
-export default EditBlogPage
+export default EditCategoryPage

@@ -1,8 +1,6 @@
 import Table from '@/ui/Table'
 import toLocalDateShort from '@/utils/dateFormatter';
 import React from 'react'
-import TableActionsButton from './TableActionsButton';
-import Avatar from '@/ui/Avatar';
 import CategoryActionsTable from './CategoryActionsTable';
 
 function CategoriesTableRow({ index, category }) {

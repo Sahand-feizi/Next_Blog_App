@@ -30,7 +30,7 @@ const breadcrumbs = [
 ]
 
 export const metadata = {
-    title: 'ایجاد بلاگ جدید'
+    title: 'ایجاد دسته بندی جدید'
 }
 
 function CreateCategoryPage() {
