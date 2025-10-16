@@ -3,6 +3,7 @@ import toLocalDateShort from '@/utils/dateFormatter';
 import React from 'react'
 import TableActionsButton from './TableActionsButton';
 import Avatar from '@/ui/Avatar';
+import CategoryActionsTable from './CategoryActionsTable';
 
 function CategoriesTableRow({ index, category }) {
     const {
@@ -12,6 +13,7 @@ function CategoriesTableRow({ index, category }) {
         slug,
         createdAt,
         updatedAt,
+        _id
     } = category;
     const dateOptions = {
         weekday: "long",
@@ -31,7 +33,9 @@ function CategoriesTableRow({ index, category }) {
             <td>{slug}</td>
             <td>{toLocalDateShort(createdAt, dateOptions)}</td>
             <td>{toLocalDateShort(updatedAt, dateOptions)}</td>
-            <td>actions...</td>
+            <td>
+                <CategoryActionsTable _id={_id} title={title}/>
+            </td>
         </Table.Row>
     )
 }

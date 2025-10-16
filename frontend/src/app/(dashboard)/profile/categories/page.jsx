@@ -20,7 +20,7 @@ const breadcrumbs = [
     {
         id: 3,
         path: '/profile/categories',
-        title: 'بلاگ ها',
+        title: 'دسته بندی ها',
         active: true
     },
 ]
