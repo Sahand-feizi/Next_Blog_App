@@ -1,6 +1,7 @@
 import Breadcrumbs from '@/ui/Breadcrumbs'
 import LoadingSpinner from '@/ui/LoadingSpinner'
 import CommentsCardWrapper from 'app/(dashboard)/_/component/CommentsCardWrapper'
+import CommentsTable from 'app/(dashboard)/_/component/CommentsTable'
 import React, { Suspense } from 'react'
 
 const breadcrumbs = [
@@ -39,6 +40,11 @@ function CommentPage() {
       <div className='grid grid-cols-12 gap-2 w-full mt-4'>
         <Suspense fallback={<LoadingSpinner color='#fff' />}>
           <CommentsCardWrapper />
+        </Suspense>
+      </div>
+      <div className='mt-6 rounded-xl p-4 bg-secondary-950'>
+        <Suspense fallback={<LoadingSpinner color='#fff' />}>
+          <CommentsTable />
         </Suspense>
       </div>
     </div>

@@ -118,7 +118,7 @@
   }
 
   .badge--secondary{
-    @apply bg-secondary-200 text-secondary-800
+    @apply bg-secondary-500 text-secondary-300
   }
 
   .badge--yellow{
