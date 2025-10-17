@@ -24,7 +24,7 @@ export function useGetAllComment() {
     ];
 
     const ChartYearComment = labels.map(label => {
-        const count = data?.comments.filter(comment => {
+        const count = data?.comments?.filter(comment => {
             const dateStr = toLocalDateShort(comment.updatedAt, {
                 month: "long",
             });
@@ -34,5 +34,10 @@ export function useGetAllComment() {
         return count;
     });
 
-    return {comments: data?.comments, ChartYearComment }
+    const { comments = [] } = data || {};
+    const numOfAcceptedComments = comments?.filter(comment => comment.status == 2).length;
+    const numOfRejectedComments = comments?.filter(comment => comment.status == 0).length;
+    const numOfReviewComments = comments?.filter(comment => comment.status == 1).length;
+
+    return { comments, numOfAcceptedComments, numOfRejectedComments, numOfReviewComments, ChartYearComment }
 }
