@@ -4,10 +4,12 @@ import React from 'react'
 import Avatar from '@/ui/Avatar';
 import { toPersianDigits } from '@/utils/numberFormater';
 import truncateText from '@/utils/truncateText';
+import CommentsTableActionsButton from './CommentsTableActionsButton';
 
 function CommentsTableRow({ index, comment }) {
     const {
         content: { text },
+        _id,
         user,
         status,
         answers,
@@ -47,7 +49,7 @@ function CommentsTableRow({ index, comment }) {
             <td>{toLocalDateShort(createdAt, dateOptions)}</td>
             <td>{toLocalDateShort(updatedAt, dateOptions)}</td>
             <td>
-                actions...
+                <CommentsTableActionsButton _id={_id} name={user?.name}/>
             </td>
         </Table.Row>
     )
