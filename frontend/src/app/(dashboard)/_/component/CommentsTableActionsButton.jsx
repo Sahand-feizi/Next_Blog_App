@@ -6,9 +6,11 @@ import { PencilIcon, PencilSquareIcon, TrashIcon } from '@heroicons/react/24/out
 import Modal from '@/ui/Modal';
 import DeleteBlogForm from './DeleteBlogForm';
 import DeleteCommentForm from './DeleteCommentForm';
+import EditCommentForm from './EditCommentForm';
 
-function CommentsTableActionsButton({ name, _id }) {
+function CommentsTableActionsButton({ name, _id, status }) {
     const [isOpen, setIsOpen] = useState(false)
+    const [Open, setOpen] = useState(false)
 
     return (
         <div className="flex items-center gap-2">
@@ -31,11 +33,24 @@ function CommentsTableActionsButton({ name, _id }) {
                 <TrashIcon className='w-6 h-6' />
             </ButtonIcon>
             <ButtonIcon
+                onClick={() => setOpen(true)}
                 className={`cursor-pointer`}
                 variant={'secondary'}
             >
                 <PencilSquareIcon className='w-6 h-6' />
             </ButtonIcon>
+            <Modal
+                open={Open}
+                onClose={() => setOpen(false)}
+                title={'حذف نظر'}
+                description={name}
+            >
+                <EditCommentForm
+                    status={status}
+                    _id={_id}
+                    onClose={() => setOpen(false)}
+                />
+            </Modal>
         </div>
     )
 }

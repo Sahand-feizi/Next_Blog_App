@@ -34,9 +34,6 @@ function CommentsTableRow({ index, comment }) {
             </td>
             <td>{user?.name}</td>
             <td>{truncateText(text, 22)}</td>
-            <td className='flex items-center gap-1'>
-                {toPersianDigits(answers?.length)}
-            </td>
             <td>
                 <span className={`badge ${status == 2 ? 'badge--green' : status == 1 ?
                     'badge--secondary' : 'badge--danger'}`}>
@@ -49,7 +46,7 @@ function CommentsTableRow({ index, comment }) {
             <td>{toLocalDateShort(createdAt, dateOptions)}</td>
             <td>{toLocalDateShort(updatedAt, dateOptions)}</td>
             <td>
-                <CommentsTableActionsButton _id={_id} name={user?.name}/>
+                <CommentsTableActionsButton _id={_id} name={user?.name} status={status}/>
             </td>
         </Table.Row>
     )

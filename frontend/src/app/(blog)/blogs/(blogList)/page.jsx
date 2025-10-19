@@ -6,7 +6,7 @@ import queryString from 'query-string'
 import React from 'react'
 
 async function BlogsPage({ searchParams }) {
-  const queries = queryString.stringify(searchParams);
+  const queries = `${queryString.stringify(searchParams)}&limit=6`;
   const cookiesStore = cookies()
   const options = setCookiesOnReq(cookiesStore)
   const { blogs } = await getBlogsApi(queries, options)
