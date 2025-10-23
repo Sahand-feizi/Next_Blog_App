@@ -31,9 +31,9 @@ function CategoriesPage() {
             <Breadcrumbs breadcrumbs={breadcrumbs} />
             <div className='flex items-center justify-between'>
                 <div className='space-y-2'>
-                    <h2 className='text-2xl md:text-3xl text-secondary-0 font-bold'>بلاگ ها</h2>
+                    <h2 className='text-2xl md:text-3xl text-secondary-0 font-bold'>دسته بندی ها</h2>
                     <p className='text-sm hidden sm:flex text-secondary-300 font-normal'>
-                        تعداد بلاگ های خودم، ایجاد بلاگ جدید و آنالیزی از اتفاقات
+                        تعداد دسته بندی ها، ایجاد دسته بندی جدید و آنالیزی از اتفاقات
                     </p>
                 </div>
                 <CreateCategory />

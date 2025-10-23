@@ -1,6 +1,7 @@
 import { getBlogsApi } from '@/services/blogServices';
 import setCookiesOnReq from '@/utils/setCookiesOnReq';
 import BlogsList from 'app/(blog)/_components/BlogsList';
+import Pagination from 'app/(blog)/_components/Pagination';
 import { cookies } from 'next/headers';
 import queryString from 'query-string'
 import React from 'react'
@@ -25,8 +26,11 @@ async function BlogsPage({ searchParams }) {
           <span className="font-bold">&quot;{searchValue}&quot;</span>
         </p>
       ) : <p className="mb-4 text-secondary-0">تعداد بلاگ ها {blogs.length}</p>}
-      <div className='grid grid-cols-12 gap-4'>
-        <BlogsList blogs={blogs} />
+      <div>
+        <div className='grid grid-cols-12 gap-4'>
+          <BlogsList blogs={blogs} />
+        </div>
+        <Pagination />
       </div>
     </div>
   )
