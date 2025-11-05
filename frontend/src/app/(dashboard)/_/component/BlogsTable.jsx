@@ -2,14 +2,23 @@
 import { getBlogsApi } from '@/services/blogServices'
 import Table from '@/ui/Table'
 import setCookiesOnReq from '@/utils/setCookiesOnReq'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import BlogsTableRow from './BlogsTableRow'
 import Pagination from './Pagination'
 
-async function BlogsTable({ queries }) {
-    const { blogs, totalPages } = await getBlogsApi(queries)
- 
-    if(blogs.length ==0){
+function BlogsTable({ queries }) {
+    const [blogsData, setBlogsData] = useState(null)
+
+    useEffect(() => {
+        async function fetchData() {
+            const data = await getBlogsApi(queries)
+            setBlogsData(data)
+        }
+
+        fetchData()
+    }, [])
+
+    if (blogsData?.blogs?.length == 0) {
         return <p className='text-base py-4 text-secondary-400 font-normal'>بلاگی یافت نشد</p>
     }
 
@@ -34,13 +43,13 @@ async function BlogsTable({ queries }) {
                 </Table.Header>
                 <Table.Body>
                     {
-                        blogs.map((blog, index) => (
+                        blogsData?.blogs.map((blog, index) => (
                             <BlogsTableRow key={blog._id} index={index} blog={blog} />
                         ))
                     }
                 </Table.Body>
             </Table>
-            <Pagination totalPages={totalPages}/>
+            <Pagination totalPages={blogsData?.totalPages} />
         </div>
     )
 }
