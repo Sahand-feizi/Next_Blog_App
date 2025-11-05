@@ -1,3 +1,4 @@
+'use client'
 import { getBlogsApi } from '@/services/blogServices'
 import Table from '@/ui/Table'
 import setCookiesOnReq from '@/utils/setCookiesOnReq'
