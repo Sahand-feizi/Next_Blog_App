@@ -1,7 +1,9 @@
+"use client"
 import Table from '@/ui/Table'
 import toLocalDateShort from '@/utils/dateFormatter';
+import dynamic from 'next/dynamic';
 import React from 'react'
-import TableActionsButton from './TableActionsButton';
+const TableActionsButton = dynamic(() => import('./TableActionsButton'), { ssr: false });
 
 function BlogsTableRow({ index, blog }) {
   const {
