@@ -1,3 +1,4 @@
+'use client'
 import SearchInput from '@/ui/SearchInput'
 import React from 'react'
 import SidbarProfile from './SidbarProfile'
