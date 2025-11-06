@@ -8,7 +8,7 @@ function SearchInput({ className, containerClassName }) {
     const searchParams = useSearchParams()
     const router = useRouter()
     const pathname = usePathname()
-    const newParams = new URLSearchParams(searchParams);
+    const newParams = new URLSearchParams(searchParams?.toString());
     const submitHandler = (e) => {
         e.preventDefault()
 
