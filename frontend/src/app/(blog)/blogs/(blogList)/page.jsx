@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { getBlogsApi } from '@/services/blogServices';
 import setCookiesOnReq from '@/utils/setCookiesOnReq';
 import BlogsList from 'app/(blog)/_components/BlogsList';

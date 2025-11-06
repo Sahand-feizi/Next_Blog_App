@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import Breadcrumbs from '@/ui/Breadcrumbs'
 import LoadingSpinner from '@/ui/LoadingSpinner'
 import BlogsCardWrapper from 'app/(dashboard)/_/component/BlogsCardWrapper'

@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import Breadcrumbs from '@/ui/Breadcrumbs'
 import CreateBlogForm from 'app/(dashboard)/_/component/CreateBlogForm'
 import React from 'react'

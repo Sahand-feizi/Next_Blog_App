@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import Button from '@/ui/Button'
 import React from 'react'
 import SearchInput from '@/ui/SearchInput';

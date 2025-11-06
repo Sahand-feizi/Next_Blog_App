@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import Breadcrumbs from '@/ui/Breadcrumbs'
 import LoadingSpinner from '@/ui/LoadingSpinner'
 import { CreateCategory } from 'app/(dashboard)/_/component/Buttons'
