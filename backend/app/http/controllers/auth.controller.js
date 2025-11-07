@@ -161,7 +161,6 @@ class UserAuthController extends Controller {
       maxAge: 1,
       expires: Date.now(),
       httpOnly: true,
-      signed: true,
       sameSite: "none",
       secure: true,
       path: "/",
