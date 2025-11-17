@@ -60,7 +60,6 @@ async function setAccessToken(res, user) {
     signed: true, // Indicates if the cookie should be signed
     sameSite: "none",
     secure: true,
-    domain: process.env.DOMAIN,
   };
   res.cookie(
     "accessToken",
@@ -76,7 +75,6 @@ async function setRefreshToken(res, user) {
     signed: true, // Indicates if the cookie should be signed
     sameSite: "none",
     secure: true,
-    domain: process.env.DOMAIN,
   };
   res.cookie(
     "refreshToken",
