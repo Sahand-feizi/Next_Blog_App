@@ -158,14 +158,12 @@ class UserAuthController extends Controller {
   }
   logout(req, res) {
     const cookieOptions = {
-      maxAge: 1,
-      expires: Date.now(),
       httpOnly: true,
       sameSite: "none",
       secure: true,
       path: "/",
     };
-    res.cookie("accessToken", null, cookieOptions);
+    res.cookie("accessToken", null, {...cookieOptions, maxAge: 0});
     res.cookie("refreshToken", null, cookieOptions);
 
     return res.status(HttpStatus.OK).json({

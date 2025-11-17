@@ -44,9 +44,19 @@ class Application {
     );
   }
   configServer() {
+    this.#app.set("trust proxy", 1);
     this.#app.use(
-      cors({ credentials: true, origin: process.env.ALLOW_CORS_ORIGIN })
+      cors({
+        credentials: true,
+        origin: process.env.ALLOW_CORS_ORIGIN,
+        allowedHeaders: ["Content-Type", "Authorization"],
+        methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
+      })
     );
+    this.#app.use((req, res, next) => {
+      res.header("Access-Control-Allow-Credentials", "true");
+      next();
+    });
     this.#app.use(express.json());
     this.#app.use(express.urlencoded({ extended: true }));
     this.#app.use(express.static(path.join(__dirname, "..")));
