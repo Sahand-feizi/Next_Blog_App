@@ -1,25 +1,25 @@
-import middlewareAuth from "./utils/middlewareAuth";
 import { NextResponse } from "next/server";
+import middlewareAuth from "./utils/middlewareAuth";
 
 export async function middleware(req) {
+    const user = await middlewareAuth(req.cookies);
     const { pathname } = req.nextUrl;
-    const user = await middlewareAuth(req.cookies)
 
-    if(pathname.startsWith('/profile')){
-        if(!user){
-            const signinUrl = new URL('/signin', req.nextUrl)
-            return NextResponse.redirect(signinUrl)
+    if (pathname.startsWith('/profile')) {
+        if (!user) {
+            return NextResponse.redirect(new URL('/signin', req.url));
         }
     }
 
-    if (pathname.startsWith('/signup') || pathname.startsWith('/signin')) {
+    if (pathname.startsWith('/signin') || pathname.startsWith('/signup')) {
         if (user) {
-            const homeUrl = new URL('/', req.nextUrl)
-            return NextResponse.redirect(homeUrl)
+            return NextResponse.redirect(new URL('/', req.url));
         }
     }
+
+    return NextResponse.next();
 }
 
 export const config = {
     matcher: ['/profile', '/signup', '/signin']
-}
+};
