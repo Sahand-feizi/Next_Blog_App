@@ -10,7 +10,7 @@ export async function fetchCardData() {
 
     try {
         const data = await Promise.all([
-            getBlogsApi(),
+            getBlogsApi('', options),
             getAllCommentApi(options),
             getAllUsersApi(options)
         ])

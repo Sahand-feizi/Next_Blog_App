@@ -13,7 +13,7 @@ app.interceptors.response.use(
         if (error?.response?.status === 401 && !originalConfig._retry) {
             originalConfig._retry = true;
             try {
-                await refreshTokenApi()
+                const data = await refreshTokenApi()
                 if (data) return app(originalConfig)
             } catch (err) {
                 return Promise.reject(err)
